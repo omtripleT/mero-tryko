@@ -24,7 +24,7 @@ body{
 /*products section*/
 .box{
     background: rgb(197, 193, 193);
-    /* margin-bottom: 20px; */
+    margin-bottom: 20px;
     margin-top: 0;
 }
 .hero{
@@ -33,7 +33,7 @@ body{
     gap: 10px;
     flex-wrap: wrap;
     padding: 0px 20px;
-    margin-left: 10px;
+    margin-left: 16px;
     
 }
 .box h2{
@@ -53,8 +53,8 @@ body{
     border-radius: 12px;
 }
 .image img{
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     margin-bottom: 8px;
     border: 1px solid gray;
     border-radius: 6px;
@@ -88,7 +88,7 @@ body{
     flex-wrap: wrap;
     align-items: center;
     padding: 10px;
-    gap: 10px;
+    gap: 12px;
     margin-left: 50px;
 }
 .featuredbox{
@@ -102,8 +102,8 @@ body{
 
 }
 .featuredbox img{
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border: 1px solid gray;
     border-radius: 3px;
 }
@@ -114,8 +114,8 @@ body{
 }
 .ancher a{
     border: 1px solid black;
-    padding: 3px;
-    font-size: 16px;
+    padding: 5px;
+    font-size: 18px;
     text-decoration: none;
     border-radius: 4px;
 }
@@ -154,23 +154,23 @@ body{
         width: 100%;
         gap: 60px;
         align-items: center;
-        margin-left: 80px;
+        margin-left: 12rem;
     }
     .box h2{
         margin-bottom: 1.6rem;
         margin-top: 5px;
     }
     .products{
-        max-width: 280px;
-        width: 280px;
+        max-width: 300px;
+        width: 300px;
         padding: 20px 10px 20px 10px;
         border: 2px solid black;
         margin-bottom: 20px;
 
     }
     .image img{
-        width: 140px;
-        height: 140px;
+        width: 200px;
+        height: 2000px;
         margin-bottom: 1rem;
 
     }
@@ -186,24 +186,24 @@ body{
     }
     .featuredarea{
         padding: 20px;
-        gap: 20px;
+        gap: 40px;
         margin-left: 20rem;
 
     }
     .featuredbox{
         border: 2px solid black;
-        max-width: 180px;
-        width: 180px;
+        max-width: 200px;
+        width: 200px;
         height: fit-content;
-        gap: 20px;
         padding: 20px 10px;
     }
     .featuredbox img{
-        width: 100px;
-        height: 100px;
+        width: 160px;
+        height: 160px;
     }
 
 }
+
 
 
 
