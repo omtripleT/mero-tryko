@@ -30,10 +30,10 @@ body{
 .hero{
     width: 100%;
     display: flex;
-    gap: 10px;
+    gap: 14px;
     flex-wrap: wrap;
     padding: 0px 20px;
-    margin-left: 16px;
+    margin-left: 14px;
     
 }
 .box h2{
@@ -47,8 +47,8 @@ body{
     align-items: center;
     border: 1px solid black;
     padding: 10px;
-    max-width: 120px;
-    width: 120px;
+    max-width: 140px;
+    width: 140px;
     margin-bottom: 10px;
     border-radius: 12px;
 }
@@ -203,6 +203,7 @@ body{
     }
 
 }
+
 
 
 
