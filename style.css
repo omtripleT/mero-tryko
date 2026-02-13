@@ -1,210 +1,157 @@
+/* ====== RESET ====== */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body{
-    height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f5f5f5;
+    line-height: 1.6;
 }
-/*header section*/
+
+/* ====== HEADER ====== */
 .header{
-    border: none;
-    border-radius: 2px;
-    background: whitesmoke;
+    background: white;
+    padding: 15px 8%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 10px 10px;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
+
+.logo h2{
+    color: #047fff;
+}
+
 .link a{
     text-decoration: none;
-    margin-left: 1rem;
+    margin-left: 20px;
+    color: #333;
+    font-weight: 500;
 }
-/*products section*/
+
+.link a:hover{
+    color: #047fff;
+}
+
+/* ====== HERO SECTION ====== */
 .box{
-    background: rgb(197, 193, 193);
-    margin-bottom: 20px;
-    margin-top: 0;
+    padding: 40px 8%;
 }
-.hero{
-    width: 100%;
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    padding: 0px 20px;
-    margin-left: 14px;
-    
-}
+
 .box h2{
     text-align: center;
-    color: black;
-    margin-bottom: 5px;
+    margin-bottom: 30px;
 }
+
+.hero{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+/* ====== PRODUCT CARD ====== */
 .products{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid black;
-    padding: 10px;
-    max-width: 140px;
-    width: 140px;
-    margin-bottom: 10px;
+    background: white;
+    padding: 15px;
     border-radius: 12px;
-}
-.image img{
-    width: 110px;
-    height: 110px;
-    margin-bottom: 8px;
-    border: 1px solid gray;
-    border-radius: 6px;
-}
-.products button{
     text-align: center;
-    border: 1px solid black;
-    border-radius: 6px;
-    padding: 6px;
-    font-size: 14px;
-    text-transform: capitalize;
-    font-style: italic;
-    background: #047fff;
-    margin-left: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
 }
-/*featured products*/
+
+.products:hover{
+    transform: translateY(-5px);
+}
+
+.image img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.products h4{
+    margin-bottom: 10px;
+}
+
+.products button{
+    background: #047fff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.products button:hover{
+    background: #035ec7;
+}
+
+/* ====== FEATURED ====== */
 .featured{
     background: white;
-    border: none;
-    border-radius: 2px;
-    margin-bottom: 10px;
+    padding: 40px 8%;
 }
+
 .featured h3{
     text-align: center;
-    margin-bottom: 5px;
-    margin-top: 2px;
-
+    margin-bottom: 30px;
 }
+
 .featuredarea{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 10px;
-    gap: 12px;
-    margin-left: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
 }
-.featuredbox{
-    max-width: 120px;
-    width: 120px;
-    border: 1px solid black;
-    padding: 5px 3px;
-    height: fit-content;
-    text-align: center;
-    border-radius: 6px;
 
+.featuredbox{
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
 }
+
 .featuredbox img{
-    width: 100px;
-    height: 100px;
-    border: 1px solid gray;
-    border-radius: 3px;
-}
-.ancherp{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.ancher a{
-    border: 1px solid black;
-    padding: 5px;
-    font-size: 18px;
-    text-decoration: none;
-    border-radius: 4px;
-}
-.footer{
-    background: whitesmoke;
-    padding: 10px;
-}
-.footerchild{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.foot a{
-    text-decoration: none;
-    margin-left: 20px;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
     margin-bottom: 10px;
 }
-.footer p{
+
+/* ====== BUTTON AREA ====== */
+.ancherp{
     text-align: center;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin-top: 25px;
 }
-.footer h4{
+
+.ancherp a{
+    text-decoration: none;
+    background: #047fff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+/* ====== FOOTER ====== */
+.footer{
+    background: #111;
+    color: white;
+    padding: 30px 8%;
     text-align: center;
-    margin-bottom: 5px;
 }
 
-
-/*for monitor display*/
-@media(min-width: 550px){
-    .box{
-        margin-bottom: 20px;
-    }
-    .hero{
-        padding: 0px 40px 0px 80px;
-        width: 100%;
-        gap: 60px;
-        align-items: center;
-        margin-left: 12rem;
-    }
-    .box h2{
-        margin-bottom: 1.6rem;
-        margin-top: 5px;
-    }
-    .products{
-        max-width: 300px;
-        width: 300px;
-        padding: 20px 10px 20px 10px;
-        border: 2px solid black;
-        margin-bottom: 20px;
-
-    }
-    .image img{
-        width: 200px;
-        height: 2000px;
-        margin-bottom: 1rem;
-
-    }
-    .products button{
-    margin-left: 18px;
-    border: 1px solid black;
-    padding: 6px;
-    font-size: 14px;
-    font-style: italic;
-}
-    .featured{
-        margin-bottom: 30px;
-    }
-    .featuredarea{
-        padding: 20px;
-        gap: 40px;
-        margin-left: 20rem;
-
-    }
-    .featuredbox{
-        border: 2px solid black;
-        max-width: 200px;
-        width: 200px;
-        height: fit-content;
-        padding: 20px 10px;
-    }
-    .featuredbox img{
-        width: 160px;
-        height: 160px;
-    }
-
+.footer a{
+    text-decoration: none;
+    color: #ccc;
+    margin: 0 10px;
 }
 
-
-
-
-
+.footer a:hover{
+    color: white;
+}
