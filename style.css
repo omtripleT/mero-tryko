@@ -6,8 +6,9 @@
 }
 
 body{
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family:'Segoe UI', Arial, sans-serif;
     background:#f5f5f5;
+    line-height:1.6;
 }
 
 /* ===== HEADER ===== */
@@ -27,13 +28,14 @@ body{
 
 .link{
     display:flex;
-    gap:15px;
+    gap:20px;
 }
 
 .link a{
     text-decoration:none;
     color:#333;
     font-weight:500;
+    transition:0.3s;
 }
 
 .link a:hover{
@@ -42,18 +44,18 @@ body{
 
 /* ===== HERO SECTION ===== */
 .box{
-    padding:30px 5%;
+    padding:40px 5%;
 }
 
 .box h2{
     text-align:center;
-    margin-bottom:25px;
+    margin-bottom:30px;
 }
 
 .hero{
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:25px;
 }
 
 /* ===== PRODUCT CARD ===== */
@@ -70,11 +72,16 @@ body{
     transform:translateY(-5px);
 }
 
+/* FIXED IMAGE ISSUE (NO CUT) */
 .image img{
     width:100%;
-    height:180px;
-    object-fit:cover;
+    height:auto;              /* important */
+    object-fit:contain;       /* show full image */
     border-radius:10px;
+    margin-bottom:12px;
+}
+
+.products h4{
     margin-bottom:10px;
 }
 
@@ -82,26 +89,31 @@ body{
     background:#047fff;
     color:white;
     border:none;
-    padding:8px 15px;
+    padding:8px 16px;
     border-radius:6px;
     cursor:pointer;
+    transition:0.3s;
 }
 
-/* ===== FEATURED ===== */
+.products button:hover{
+    background:#035ec7;
+}
+
+/* ===== FEATURED SECTION ===== */
 .featured{
     background:white;
-    padding:30px 5%;
+    padding:40px 5%;
 }
 
 .featured h3{
     text-align:center;
-    margin-bottom:25px;
+    margin-bottom:30px;
 }
 
 .featuredarea{
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
+    gap:25px;
 }
 
 .featuredbox{
@@ -111,53 +123,66 @@ body{
     text-align:center;
 }
 
+/* FIXED FEATURE IMAGE ISSUE */
 .featuredbox img{
     width:100%;
-    height:150px;
-    object-fit:cover;
+    height:auto;             /* important */
+    object-fit:contain;
     border-radius:8px;
     margin-bottom:10px;
 }
 
+/* ===== BUTTON AREA ===== */
 .ancherp{
     text-align:center;
-    margin-top:20px;
+    margin-top:25px;
 }
 
 .ancherp a{
+    text-decoration:none;
     background:#047fff;
     color:white;
     padding:10px 20px;
     border-radius:6px;
-    text-decoration:none;
+    transition:0.3s;
+}
+
+.ancherp a:hover{
+    background:#035ec7;
 }
 
 /* ===== FOOTER ===== */
 .footer{
     background:#111;
     color:white;
-    padding:25px 5%;
+    padding:30px 5%;
     text-align:center;
 }
 
 .footer a{
-    color:#ccc;
-    margin:0 8px;
     text-decoration:none;
+    color:#ccc;
+    margin:0 10px;
+    transition:0.3s;
+}
+
+.footer a:hover{
+    color:white;
 }
 
 /* ===== MOBILE FIX ===== */
 @media(max-width:600px){
 
     .header{
-        flex-direction: row;
-        align-items:center;
+        flex-direction:column;
         gap:10px;
     }
 
+    /* NAV LINKS IN ROW */
     .link{
-        flex-direction:column;
-        align-items:center;
+        flex-direction:row;
+        justify-content:center;
+        gap:15px;
     }
 
     .hero{
@@ -167,9 +192,4 @@ body{
     .featuredarea{
         grid-template-columns:1fr;
     }
-
-    .image img{
-        height:200px;
-    }
 }
-
