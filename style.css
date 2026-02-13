@@ -113,7 +113,7 @@ body{
 
 .featuredbox img{
     width:100%;
-    height:130px;
+    height:150px;
     object-fit:cover;
     border-radius:8px;
     margin-bottom:10px;
@@ -150,7 +150,7 @@ body{
 @media(max-width:600px){
 
     .header{
-        flex-direction:column;
+        flex-direction: row;
         align-items:center;
         gap:10px;
     }
@@ -172,3 +172,4 @@ body{
         height:200px;
     }
 }
+
