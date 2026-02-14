@@ -15,6 +15,8 @@
             <a href="#">shop</a>
             <a href="#">contacts</a>
         </nav>
+        <button id="cart-btn" onclick="goToCart()" class="cart">Cart (0)</button>
+
     </header>
     <!--products section-->
     <section class="products-section">
@@ -30,7 +32,8 @@
                 </div>
                 <h5>Rs 300 only</h5>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                 <a>buy now</a>
+                 <button class="buy-btn" data-name="namkeen" data-price="45">add to cart</button>
+
             </div>
 
             <div class="card">
@@ -42,7 +45,8 @@
                 </div>
                 <h5>Rs 300 only</h5>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                 <a>buy now</a>
+                 <button class="buy-btn" data-name="til ladu" data-price="300">add to cart</button>
+
             </div>
 
             <div class="card">
@@ -54,7 +58,8 @@
                 </div>
                 <h5>Rs 300 only</h5>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                 <a>buy now</a>
+                <button class="buy-btn" data-name="potato chips" data-price="300">add to cart</button>
+
             </div>
 
             <div class="card">
@@ -66,7 +71,8 @@
                 </div>
                 <h5>Rs 300 only</h5>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                 <a>buy now</a>
+                 <button class="buy-btn" data-name="fryumps" data-price="300">add to cart</button>
+
             </div>
 
             <div class="card">
@@ -78,7 +84,8 @@
                 </div>
                 <h5>Rs 300 only</h5>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                 <a>buy now</a>
+                <button class="buy-btn" data-name="kaju" data-price="30">add to cart</button>
+
             </div>
 
             <div class="card">
@@ -90,9 +97,13 @@
                 </div>
                 <h5>Rs 300 only</h5>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                <a>buy now</a>
+                <button class="buy-btn" data-name="khajuri" data-price="300">add to cart</button>
             </div>
 
+        </div>
+
+        <div style="text-align:center; margin:20px;">
+            <button class="placeorder"  onclick="goToCart()">Place Order</button>
         </div>
     </section>
     
@@ -137,5 +148,9 @@
         </div>
         <p>© 2026 all rights are reserved mero tryko</p>
     </footer>
+
+
+    <!--js here-->
+    <script src="script.js"></script>
 </body>
 </html>
