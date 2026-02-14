@@ -32,6 +32,13 @@ body{
 .nav a:hover{
     color: #3A7D44;
 }
+.cart{
+    border: none;
+    background: #FF7A18;
+    color: white;
+    padding: 0.4rem 0.6rem;
+    border-radius: 16px;
+}
 /*products section*/
 .products-section{
     padding: 2rem 1rem;
@@ -96,7 +103,7 @@ body{
     color:#555;
     margin-bottom: 1rem;
 }
-.card a{
+.card button{
     margin-top: 0.5rem;
     padding: 0.5rem 1rem;
     border: none;
@@ -105,8 +112,17 @@ body{
     border-radius: 16px;
     text-decoration: none;
 }
-.card a:hover{
+.card button:hover{
     background:#2F5D34;;
+}
+.placeorder{
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background: #FF7A18;
+    color: white;
+    border-radius: 16px;
+    text-decoration: none;
 }
 
 /*featured section*/
@@ -210,6 +226,10 @@ body{
     }
     .products-grid{
         grid-template-columns: repeat(4,1fr);
+
+    }
+    .card{
+        min-height: fit-content;
     }
     .featured-grid{
         grid-template-columns: repeat(4,1fr);
@@ -220,6 +240,3 @@ body{
         grid-template-columns: repeat(4,1fr);
     }
 }
-
-
-
