@@ -210,7 +210,9 @@ body{
     }
     .products-grid{
         grid-template-columns: repeat(3,1fr);
-
+    }
+    .card{
+        min-height: fit content;
     }
     .featured-grid{
         grid-template-columns: repeat(4,1fr);
@@ -221,3 +223,4 @@ body{
         grid-template-columns: repeat(4,1fr);
     }
 }
+
