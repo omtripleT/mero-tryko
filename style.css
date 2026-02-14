@@ -209,10 +209,10 @@ body{
         justify-content: space-between;
     }
     .products-grid{
-        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(4,1fr);
     }
     .card{
-        min-height: fit content;
+        min-height: 400px;
     }
     .featured-grid{
         grid-template-columns: repeat(4,1fr);
@@ -223,4 +223,5 @@ body{
         grid-template-columns: repeat(4,1fr);
     }
 }
+
 
