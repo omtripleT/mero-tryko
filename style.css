@@ -211,9 +211,6 @@ body{
     .products-grid{
         grid-template-columns: repeat(4,1fr);
     }
-    .card{
-        min-height: 400px;
-    }
     .featured-grid{
         grid-template-columns: repeat(4,1fr);
     }
@@ -223,5 +220,6 @@ body{
         grid-template-columns: repeat(4,1fr);
     }
 }
+
 
 
