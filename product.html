@@ -62,32 +62,52 @@
         .box {
             display: flex;
             align-items: center;
-            justify-content: space-around;
+            justify-content: space-between;
             border: 2px solid #3A7D44;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             border-radius: 16px;
             gap: 16px;
-            background: whitesmoke;
+            padding: 1rem;
+            transition: transform 0.5s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            /* prevents content overflow */
         }
 
         .box img {
-            width: 40%;
-            aspect-ratio: 1/1;
+            width: 120px;
+            /* fixed width */
+            height: 120px;
+            /* fixed height */
             object-fit: contain;
-            background: transparent;
-            border: none;
-            border-radius: 4px;
+            flex-shrink: 0;
+            /* prevents image shrinking */
+        }
+        .box{
+            transition: transform 0.5s ease, box-shadow 0.3s ease;
+        }
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .info {
+            flex: 1;
+            /* text takes remaining space */
+            min-width: 0;
+            /* prevents overflow */
         }
 
         .info h3 {
             font-size: 16px;
             margin-bottom: 0.6rem;
+            word-wrap: break-word;
         }
 
         .info p {
-            font-size: 8px;
-            line-height: 1.2rem;
+            font-size: 14px;
+            line-height: 1.4rem;
             margin-bottom: 0.6rem;
+            word-wrap: break-word;
         }
 
         .info a {
@@ -118,14 +138,15 @@
 
         .featured .box {
             border: 2px solid orange;
-            background: white;
         }
-        .featured .grid{
+
+        .featured .grid {
             margin-bottom: 1.2rem;
         }
 
         .featured .info a {
             background: orange;
+            margin-bottom: 1rem;
         }
 
 
@@ -167,7 +188,7 @@
 
         .link a {
             color: black;
-            margin-left: 0.6rem;
+            margin-left: 0.8rem;
         }
 
         .link a:hover {
@@ -180,6 +201,10 @@
             .grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
+            }
+
+            .info p {
+                font-size: 18px;
             }
 
         }
@@ -197,56 +222,52 @@
         <div class="grid">
 
             <div class="box">
-                <img src="image.png" alt="image">
+                <img src="image/thekuwa.png" alt="image">
                 <div class="info">
-                    <h3>khajuri</h3>
-                    <p><span style="color: orange;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Quia, earum!</p>
+                    <h3>Khajuri</h3>
+                    <p><span style="color: orange;">Ingredients:</span> wheat flour,sugar,sunflow oil,peanut,dry
+                        fruits,fennel seeds,cardamom.</p>
                     <a href="index.html">buy now</a>
                 </div>
             </div>
             <div class="box">
                 <img src="image.png" alt="image">
                 <div class="info">
-                    <h3>khajuri</h3>
-                    <p><span style="color: orange;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Quia, earum!</p>
+                    <h3>Potato chips</h3>
+                    <p><span style="color: orange;">Ingredients:</span> potato,salt,spices.</p>
                     <a href="index.html">buy now</a>
                 </div>
             </div>
             <div class="box">
                 <img src="image.png" alt="image">
                 <div class="info">
-                    <h3>khajuri</h3>
-                    <p><span style="color: orange;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Quia, earum!</p>
+                    <h3>Fryumps</h3>
+                    <p><span style="color: orange;">Ingredients:</span> rice flour,suji,salt,carom seeds</p>
                     <a href="index.html">buy now</a>
                 </div>
             </div>
             <div class="box">
                 <img src="image.png" alt="image">
                 <div class="info">
-                    <h3>khajuri</h3>
-                    <p><span style="color: orange;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Quia, earum!</p>
+                    <h3>Maluwa</h3>
+                    <p><span style="color: orange;">Ingredients:</span> wheat flour,suji,sugar,sunflower oil,fennel
+                        seeds,cardamom.</p>
                     <a href="index.html">buy now</a>
                 </div>
             </div>
             <div class="box">
                 <img src="image.png" alt="image">
                 <div class="info">
-                    <h3>khajuri</h3>
-                    <p><span style="color: orange;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Quia, earum!</p>
+                    <h3>Dalmot</h3>
+                    <p><span style="color: orange;">Ingredients:</span> </p>
                     <a href="index.html">buy now</a>
                 </div>
             </div>
             <div class="box">
-                <img src="image.png" alt="image">
+                <img src="image/tilladu.png" alt="image">
                 <div class="info">
-                    <h3>khajuri</h3>
-                    <p><span style="color: orange;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Quia, earum!</p>
+                    <h3>Tilko ladu</h3>
+                    <p><span style="color: orange;">Ingredients:</span> white sesame seeds,jaggery,dry fruits</p>
                     <a href="index.html">buy now</a>
                 </div>
             </div>
@@ -256,45 +277,77 @@
     <!--featured products-->
     <section class="featured">
         <h4>our featured products</h4>
+        <h4><span style="color: #3A7D44;text-align: center;">pickel section</span></h4>
         <div class="grid">
 
             <div class="box">
-                <img src="image.png" alt="image">
+                <img src="image/mango.png" alt="image">
                 <div class="info">
-                    <h3>khajuri</h3>
-                    <p><span style="color: #3A7D44;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Quia, earum!</p>
-                    <a href="index.html">click here</a>
+                    <h3>Mango pickel</h3>
+                    <p><span style="color: #3A7D44;">Ingredients:</span> mango, salt, spices,mustard oil.(no any
+                        chemical preservatives).</p>
+                    <p>Available in:<span style="color: #3A7D44;"> 250g,500g,750g,1000g</span></p>
+                    <a href="mailto:omtriplet3@gmail.com">click here</a>
                 </div>
             </div>
             <div class="box">
-                <img src="image.png" alt="image">
+                <img src="image/lemon.png" alt="image">
                 <div class="info">
-                    <h3>khajuri</h3>
-                    <p><span style="color: #3A7D44;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Quia, earum!</p>
-                    <a href="index.html">click here</a>
+                    <h3>Lemon pickel</h3>
+                    <p><span style="color: #3A7D44;">Ingredients:</span> lemon, salt, spices,mustard oil.(no any
+                        chemical preservatives).</p>
+                    <p>Available in:<span style="color: #3A7D44;"> 250g,500g,750g,1000g</span></p>
+                    <a href="mailto:omtriplet3@gmail.com">click here</a>
                 </div>
             </div>
             <div class="box">
-                <img src="image.png" alt="image">
+                <img src="image/radius.jpeg" alt="image">
                 <div class="info">
-                    <h3>khajuri</h3>
-                    <p><span style="color: #3A7D44;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Quia, earum!</p>
-                    <a href="index.html">click here</a>
+                    <h3>Radius pickel</h3>
+                    <p><span style="color: #3A7D44;">Ingredients:</span> radius, salt, spices,mustard oil.(no any
+                        chemical preservatives).</p>
+                    <p>Available in:<span style="color: #3A7D44;"> 250g,500g,750g,1000g</span></p>
+                    <a href="mailto:omtriplet3@gmail.com">click here</a>
                 </div>
             </div>
             <div class="box">
-                <img src="image.png" alt="image">
+                <img src="image/chilli.jpeg" alt="image">
                 <div class="info">
-                    <h3>khajuri</h3>
-                    <p><span style="color: #3A7D44;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Quia, earum!</p>
+                    <h3>Chilli pickel</h3>
+                    <p><span style="color: #3A7D44;">Ingredients:</span> capsicum, salt, spices,mustard oil.(no any
+                        chemical preservatives).</p>
+                    <p>Available in:<span style="color: #3A7D44;"> 250g,500g</span></p>
+                    <a href="mailto:omtriplet3@gmail.com">click here</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="featured">
+        <h4><span style="color: orange;"> our deserts products</h4>
+        <div class="grid">
+
+            <div class="box">
+                <img src="image/laljamun.png" alt="image">
+                <div class="info">
+                    <h3>Lal Jamun</h3>
+                    <p><span style="color: #3A7D44;">Ingredients:</span> milk solids,sugar,cardamom(no any chemical
+                        preservatives).</p>
+                    <p>Available in:<span style="color: #3A7D44;"> 250g,500g,750g,1000g</span></p>
                     <a href="index.html">click here</a>
                 </div>
             </div>
 
+            <div class="box">
+                <img src="image/whitejamun.png" alt="image">
+                <div class="info">
+                    <h3>White Jamun</h3>
+                    <p><span style="color: #3A7D44;">Ingredients:</span> milk solids,sugar,cardamom(no any chemical
+                        preservatives).</p>
+                    <p>Available in:<span style="color: #3A7D44;"> 250g,500g,750g,1000g</span></p>
+                    <a href="index.html">click here</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -309,7 +362,7 @@
             <a href="https://call.whatsapp.com/video/UnmIADa2hhuK3L3g6UI3wh"><i class="fa-brands fa-whatsapp"></i></a>
             <a href="#"><i class="fa-brands fa-facebook"></i></a>
             <a href="#"><i class="fa-brands fa-instagram"></i></href>
-            <a href="mailto:omtriplet3@gmail.com"><i class="fa-brands fa-envelope"></i></a>
+                <a href="mailto:omtriplet3@gmail.com"><i class="fa-brands fa-envelope"></i></a>
         </div>
     </footer>
 
@@ -317,6 +370,4 @@
 
 </body>
 
-
 </html>
-
