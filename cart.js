@@ -1,32 +1,37 @@
-// ========== CART DATA ==========
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+// ===== CART PAGE SCRIPT =====
 
+// Get elements
 const container = document.getElementById("cart-container");
 const subtotalDisplay = document.getElementById("subtotal");
 const deliveryDisplay = document.getElementById("delivery");
 const grandTotalDisplay = document.getElementById("grand-total");
 
-// Form fields
 const productsField = document.getElementById("form-products");
 const totalField = document.getElementById("form-total");
 
-// ========== RENDER CART ==========
-function renderCart(){
+const orderForm = document.getElementById("google-order-form");
+const submitButton = orderForm.querySelector("button");
+
+// ===== RENDER CART =====
+function renderCart() {
+  // Always read the latest cart from localStorage
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
   container.innerHTML = "";
 
-  if(cart.length === 0){
+  if (cart.length === 0) {
     container.innerHTML = "<p>Your cart is empty.</p>";
     subtotalDisplay.textContent = "";
     deliveryDisplay.textContent = "";
     grandTotalDisplay.textContent = "";
     productsField.value = "";
     totalField.value = "";
+    submitButton.disabled = true;
     return;
   }
 
   let subtotal = 0;
 
-  cart.forEach((item,index)=>{
+  cart.forEach((item, index) => {
     subtotal += item.price * item.quantity;
 
     const div = document.createElement("div");
@@ -44,50 +49,75 @@ function renderCart(){
     container.appendChild(div);
   });
 
-  // Delivery logic
   let deliveryCharge = subtotal > 399 ? 0 : 50;
   deliveryDisplay.textContent = deliveryCharge === 0 ? "Delivery: Free 🎉" : `Delivery: Rs 50`;
   deliveryDisplay.style.color = deliveryCharge === 0 ? "#3A7D44" : "#FF7A18";
 
-  let grandTotal = subtotal + deliveryCharge;
-
+  const grandTotal = subtotal + deliveryCharge;
   subtotalDisplay.textContent = `Subtotal: Rs ${subtotal}`;
   grandTotalDisplay.textContent = `Total: Rs ${grandTotal}`;
 
-  // Update form hidden fields
-  productsField.value = cart.map(i=>`${i.name} x${i.quantity}`).join(", ");
+  productsField.value = cart.map(i => `${i.name} x${i.quantity}`).join(", ");
   totalField.value = `Rs ${grandTotal}`;
+
+  submitButton.disabled = false;
 }
 
-// ========== CART FUNCTIONS ==========
-function increase(index){
-  cart[index].quantity++;
-  saveCart();
-}
-
-function decrease(index){
-  if(cart[index].quantity>1) cart[index].quantity--;
-  saveCart();
-}
-
-function removeItem(index){
-  cart.splice(index,1);
-  saveCart();
-}
-
-function saveCart(){
+// ===== CART FUNCTIONS =====
+function increase(i) { 
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart[i].quantity++;
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
 }
 
-// Initial render
+function decrease(i) { 
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (cart[i].quantity > 1) cart[i].quantity--;
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function removeItem(i) { 
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.splice(i, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+// ===== INITIAL RENDER =====
 renderCart();
 
-// ========== ORDER FORM SUBMISSION ==========
-document.getElementById("google-order-form").addEventListener("submit", function(e){
-  setTimeout(()=>{
-    alert("✅ Order Confirmed! Thank you.");
+// ===== ORDER FORM SUBMISSION =====
+orderForm.addEventListener("submit", function(e){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Block empty cart
+  if(cart.length === 0){
+    e.preventDefault();
+    alert("⚠️ Cannot place order! Your cart is empty.");
+    return;
+  }
+
+  // Populate hidden fields
+  productsField.value = cart.map(i => `${i.name} x${i.quantity}`).join(", ");
+  const subtotal = cart.reduce((acc,i) => acc + i.price*i.quantity,0);
+  const delivery = subtotal > 399 ? 0 : 50;
+  const grandTotal = subtotal + delivery;
+  totalField.value = `Rs ${grandTotal}`;
+
+  // Ask user to confirm
+  e.preventDefault(); // prevent default first
+  if(confirm(`Confirm your order of total ${totalField.value}?`)) {
+    // Temporarily submit to iframe
+    orderForm.submit();
+
+    // Clear cart after confirmation
     localStorage.removeItem("cart");
     renderCart();
-  },500);
+
+    alert("✅ Order Confirmed! Your cart has been cleared.");
+  } else {
+    submitButton.disabled = false;
+  }
 });
