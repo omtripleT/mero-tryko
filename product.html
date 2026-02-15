@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>products info</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            border: none;
+            padding: 1.6rem;
+            background: whitesmoke;
+            border-radius: 2px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo h3 {
+            font-size: 24px;
+        }
+
+        /*hero section*/
+        .hero {
+            padding: 1rem;
+            background: white;
+        }
+
+        .hero h4 {
+            font-size: 16px;
+            text-transform: capitalize;
+            text-align: center;
+            margin-bottom: 1.6rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 20px;
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border: 2px solid #3A7D44;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            gap: 16px;
+        }
+
+        .box img {
+            width: 40%;
+            aspect-ratio: 1/1;
+            object-fit: contain;
+            background: transparent;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .info h3 {
+            font-size: 16px;
+            margin-bottom: 0.6rem;
+        }
+
+        .info p {
+            font-size: 8px;
+            line-height: 1.2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .info a {
+            text-decoration: none;
+            padding: 4px;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            background: #3A7D44;
+            text-transform: capitalize;
+            font-size: 12px;
+        }
+
+        /*featured products*/
+        .featured {
+            background: whitesmoke;
+            margin-bottom: 1rem;
+        }
+
+        .featured h4 {
+            font-size: 16px;
+            text-transform: capitalize;
+            text-align: center;
+            margin-bottom: 1.6rem;
+
+        }
+
+        .featured .box {
+            border: 2px solid orange;
+        }
+        .featured .grid{
+            margin-bottom: 1.2rem;
+        }
+
+        .featured .info a {
+            background: orange;
+        }
+
+
+        .home {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .home a {
+            color: #ffff;
+            text-decoration: none;
+            border: none;
+            border-radius: 16px;
+            background: #3A7D44;
+            padding: 0.5rem;
+            text-transform: capitalize;
+            font-size: 16px;
+        }
+
+        .home a:hover {
+            background: #2F5D34;
+        }
+
+        /*for footer*/
+        .footer {
+            background: whitesmoke;
+            padding: 1rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer h3 {
+            font-size: 24px;
+            text-transform: capitalize;
+            margin-bottom: 0.8rem;
+        }
+
+        .link a {
+            color: black;
+            margin-left: 0.6rem;
+        }
+
+        .link a:hover {
+            color: #3A7D44;
+        }
+
+        /*for pc*/
+
+        @media(min-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <h3>product<span style="color: #3A7D44;"> Info</span></h3>
+        </div>
+    </header>
+    <section class="hero">
+        <h4>our hero products</h4>
+        <div class="grid">
+
+            <div class="box">
+                <img src="image.png" alt="image">
+                <div class="info">
+                    <h3>khajuri</h3>
+                    <p><span style="color: orange;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
+                        consectetur adipisicing elit. Quia, earum!</p>
+                    <a href="index.html">buy now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="image.png" alt="image">
+                <div class="info">
+                    <h3>khajuri</h3>
+                    <p><span style="color: orange;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
+                        consectetur adipisicing elit. Quia, earum!</p>
+                    <a href="index.html">buy now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="image.png" alt="image">
+                <div class="info">
+                    <h3>khajuri</h3>
+                    <p><span style="color: orange;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
+                        consectetur adipisicing elit. Quia, earum!</p>
+                    <a href="index.html">buy now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="image.png" alt="image">
+                <div class="info">
+                    <h3>khajuri</h3>
+                    <p><span style="color: orange;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
+                        consectetur adipisicing elit. Quia, earum!</p>
+                    <a href="index.html">buy now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="image.png" alt="image">
+                <div class="info">
+                    <h3>khajuri</h3>
+                    <p><span style="color: orange;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
+                        consectetur adipisicing elit. Quia, earum!</p>
+                    <a href="index.html">buy now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="image.png" alt="image">
+                <div class="info">
+                    <h3>khajuri</h3>
+                    <p><span style="color: orange;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
+                        consectetur adipisicing elit. Quia, earum!</p>
+                    <a href="index.html">buy now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--featured products-->
+    <section class="featured">
+        <h4>our featured products</h4>
+        <div class="grid">
+
+            <div class="box">
+                <img src="image.png" alt="image">
+                <div class="info">
+                    <h3>khajuri</h3>
+                    <p><span style="color: #3A7D44;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
+                        consectetur adipisicing elit. Quia, earum!</p>
+                    <a href="index.html">click here</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="image.png" alt="image">
+                <div class="info">
+                    <h3>khajuri</h3>
+                    <p><span style="color: #3A7D44;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
+                        consectetur adipisicing elit. Quia, earum!</p>
+                    <a href="index.html">click here</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="image.png" alt="image">
+                <div class="info">
+                    <h3>khajuri</h3>
+                    <p><span style="color: #3A7D44;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
+                        consectetur adipisicing elit. Quia, earum!</p>
+                    <a href="index.html">click here</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="image.png" alt="image">
+                <div class="info">
+                    <h3>khajuri</h3>
+                    <p><span style="color: #3A7D44;">Ingredients:</span>heat rice ec Lorem ipsum, dolor sit amet
+                        consectetur adipisicing elit. Quia, earum!</p>
+                    <a href="index.html">click here</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="home">
+        <a href="index.html">back to home</a>
+    </div>
+
+    <!--footer-->
+    <footer class="footer">
+        <h3>mero <span style="color: #3A7D44;">Tryko</span></h3>
+        <div class="link">
+            <a href="https://call.whatsapp.com/video/UnmIADa2hhuK3L3g6UI3wh"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></href>
+            <a href="mailto:omtriplet3@gmail.com"><i class="fa-brands fa-envelope"></i></a>
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>
