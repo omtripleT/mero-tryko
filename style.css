@@ -75,6 +75,7 @@ body{
 .card h4{
     font-size: 20px;
     margin-bottom: 0.2rem;
+    text-transform: capitalize;
 }
 .price{
     display: flex;
@@ -101,7 +102,7 @@ body{
     text-transform: capitalize;
 }
 .card p{
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1rem;
     color:#555;
     margin-bottom: 1rem;
@@ -298,6 +299,9 @@ body{
     }
     .card{
         min-height: fit-content;
+    }
+    .card p{
+        font-size: 20px;
     }
     .featured-grid{
         grid-template-columns: repeat(4,1fr);
