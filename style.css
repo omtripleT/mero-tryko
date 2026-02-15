@@ -17,9 +17,9 @@ body{
     align-items: center;
     gap: 0.5rem;
     box-shadow:0 3px 10px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
     z-index: 100;
+    top: 0;            /* Ensure the header sticks to the top */
+    position: sticky;
 }
 .logo{
     text-transform: capitalize;
@@ -221,6 +221,71 @@ body{
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
+
+/*message area*/
+
+/* Message Section */
+.message-section{
+    padding: 2rem 1rem;
+    background: #f5f5f5;
+    text-align: center;
+}
+
+.message-section h2{
+    text-transform: capitalize;
+    color:#C68642;
+    margin-bottom: 1rem;
+}
+
+#message-form{
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#message-form input,
+#message-form textarea{
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+#message-form textarea{
+    resize: none;
+    height: 100px;
+}
+
+.rating{
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.rating span{
+    transition: 0.3s;
+}
+
+.rating span.active{
+    color: #FF7A18;
+}
+
+.send-btn{
+    padding: 0.6rem;
+    border: none;
+    background: #3A7D44;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.send-btn:hover{
+    background:#2F5D34;
+}
+
+
 /*for big screeen*/
 @media(min-width: 768px){
     .header{
@@ -243,4 +308,3 @@ body{
         grid-template-columns: repeat(4,1fr);
     }
 }
-
