@@ -49,7 +49,7 @@ function renderCart() {
     container.appendChild(div);
   });
 
-  let deliveryCharge = subtotal > 399 ? 0 : 50;
+  let deliveryCharge = subtotal > 199 ? 0 : 50;
   deliveryDisplay.textContent = deliveryCharge === 0 ? "Delivery: Free 🎉" : `Delivery: Rs 50`;
   deliveryDisplay.style.color = deliveryCharge === 0 ? "#3A7D44" : "#FF7A18";
 
