@@ -102,7 +102,7 @@ orderForm.addEventListener("submit", function(e){
   // Populate hidden fields
   productsField.value = cart.map(i => `${i.name} x${i.quantity}`).join(", ");
   const subtotal = cart.reduce((acc,i) => acc + i.price*i.quantity,0);
-  const delivery = subtotal > 399 ? 0 : 50;
+  const delivery = subtotal > 199 ? 0 : 50;
   const grandTotal = subtotal + delivery;
   totalField.value = `Rs ${grandTotal}`;
 
