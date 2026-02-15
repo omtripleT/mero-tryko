@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mero tryko</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 <body>
     <!--header section-->
     <header class="header">
         <h3 class="logo"><span style="color: black;">mero</span> tryko</h3>
         <nav class="nav">
-            <a href="#">home</a>
-            <a href="#">shop</a>
-            <a href="#">contacts</a>
+            <a href="about.html">About us</a>
+            <a href="about.html">contacts</a>
+            <a href="product.html">products info</a>
         </nav>
-        <button id="cart-btn" onclick="goToCart()" class="cart">Cart (0)</button>
+        <button id="cart-btn" onclick="goToCart()" class="cart"><i class="fa-solid fa-cart-shopping"></i>(0)</button>
 
     </header>
     <!--products section-->
@@ -137,14 +139,61 @@
         <a href="#">explore more</a>
         </div>
     </section>
+
+
+    <!--message area-->
+    <!-- Message Section -->
+<section class="message-section">
+    <h2>leave your feedback</h2>
+
+    <form id="message-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSeatxVXm2sGsDoP-dOCoOnzwsnyzpdLpuTvKn48i7MokJRl7Q/formResponse"
+          method="POST"
+          target="hidden_iframe">
+
+        <input type="text"
+               name="entry.829618461"
+               placeholder="Your Nick Name"
+               required>
+
+        <textarea name="entry.1143043689"
+                  placeholder="Write your message..."
+                  required></textarea>
+
+        <!-- Star Rating -->
+        <div class="rating">
+            <span data-value="1">★</span>
+            <span data-value="2">★</span>
+            <span data-value="3">★</span>
+            <span data-value="4">★</span>
+            <span data-value="5">★</span>
+        </div>
+
+        <input type="hidden"
+               name="entry.553279323"
+               id="rating-value"
+               required>
+
+        <button type="submit" class="send-btn">Send Message</button>
+
+    </form>
+
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+    <p id="success-message" style="display:none; color:#3A7D44; margin-top:10px;">
+       🎉 Thank you for your feedback! 🎉
+    </p>
+</section>
+
     
     <!--footer-->
     <footer class="footer">
         <h3><span style="color: black;">mero</span> tryko</h3>
         <div class="link">
-            <a href="#">home</a>
-            <a href="#">home</a>
-            <a href="#">home</a>
+            <a href="https://call.whatsapp.com/video/UnmIADa2hhuK3L3g6UI3wh"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></href>
+            <a href="mailto:omtriplet3@gmail.com"><i class="fa-brands fa-envelope"></i></a>
         </div>
         <p>© 2026 all rights are reserved mero tryko</p>
     </footer>
