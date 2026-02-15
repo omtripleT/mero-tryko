@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <title>aboutus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            border: none;
+            padding: 1.6rem;
+            background: whitesmoke;
+            border-radius: 2px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo h3 {
+            font-size: 24px;
+        }
+
+        .aboutus {
+            padding: 1rem;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .box {
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 2px solid orange;
+            border-radius: 16px;
+            gap: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+
+        }
+
+        /*for contact/location*/
+        .areabox {
+            background: white;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .areabox h3 {
+            text-align: center;
+            text-transform: capitalize;
+            font-size: 24px;
+            margin-bottom: 0.8rem;
+        }
+
+        .area {
+            margin-bottom: 2rem;
+            border: 2px solid orange;
+            border-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .info {
+            font-size: 16px;
+            line-height: 1.2rem;
+            text-align: center;
+        }
+
+        .box1 {
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            gap: 2rem;
+
+        }
+
+        .location h4 {
+            margin-bottom: 0.6rem;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .home {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .home a {
+            color: #ffff;
+            text-decoration: none;
+            border: none;
+            border-radius: 16px;
+            background: #3A7D44;
+            padding: 0.5rem;
+            text-transform: capitalize;
+            font-size: 16px;
+        }
+
+        .home a:hover {
+            background: #2F5D34;
+        }
+
+        .footer {
+            background: whitesmoke;
+            padding: 1rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer h3 {
+            font-size: 24px;
+            text-transform: capitalize;
+            margin-bottom: 0.8rem;
+        }
+
+        .link a {
+            color: black;
+            margin-left: 0.6rem;
+        }
+
+        .link a:hover {
+            color: #3A7D44;
+
+        }
+
+        @media(min-width: 768px) {
+            .box {
+                max-width: 440px;
+            }
+
+            .box1 {
+                max-width: 440px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <h3>About <span style="color: #3A7D44;">us</span></h3>
+        </div>
+    </header>
+    <section class="aboutus">
+        <div class="box">
+            <div class="about">
+                <p class="info">we are made the home made. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Dolor, cum.</p>
+            </div>
+    </section>
+
+    <!--located at-->
+    <section class="areabox">
+        <h3>we are <span style="color: #3A7D44;">located</span> at:</h3>
+        <dic class="area">
+            <div class="box1">
+                <div class="location">
+                    <h4>Malangwa-4</h4>
+                    <h4>Sarlahi</h4>
+                    <h4>Nepal</h4>
+                    <h4>phone:9745829350</h5>
+                        <h4>email:omtriplet3@gmail.com</h5>
+                </div>
+            </div>
+            </div>
+            
+    </section>
+    <div class="home">
+                <a href="index.html">back to home</a>
+            </div>
+
+
+
+    <!--footer-->
+    <footer class="footer">
+        <h3>mero <span style="color: #3A7D44;">Tryko</span></h3>
+        <div class="link">
+            <a href="https://call.whatsapp.com/video/UnmIADa2hhuK3L3g6UI3wh"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></href>
+            <a href="mailto:omtriplet3@gmail.com"><i class="fa-brands fa-envelope"></i></a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
