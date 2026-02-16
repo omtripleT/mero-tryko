@@ -32,7 +32,7 @@ function renderCart() {
   let subtotal = 0;
 
   cart.forEach((item, index) => {
-    subtotal += item.price * item.quantity;
+    subtotal += Number(item.price) * item.quantity; // convert to number
 
     const div = document.createElement("div");
     div.classList.add("cart-item");
@@ -49,8 +49,10 @@ function renderCart() {
     container.appendChild(div);
   });
 
+  // Free delivery above Rs 199
   let deliveryCharge = subtotal > 199 ? 0 : 50;
-  deliveryDisplay.textContent = deliveryCharge === 0 ? "Delivery: Free 🎉" : `Delivery: Rs 50`;
+
+  deliveryDisplay.textContent = deliveryCharge === 0 ? "Delivery: Free 🎉" : `Delivery: Rs ${deliveryCharge}`;
   deliveryDisplay.style.color = deliveryCharge === 0 ? "#3A7D44" : "#FF7A18";
 
   const grandTotal = subtotal + deliveryCharge;
@@ -99,20 +101,22 @@ orderForm.addEventListener("submit", function(e){
     return;
   }
 
+  // Calculate totals
+  const subtotal = cart.reduce((acc, i) => acc + Number(i.price) * i.quantity, 0);
+  const deliveryCharge = subtotal > 199 ? 0 : 50;
+  const grandTotal = subtotal + deliveryCharge;
+
   // Populate hidden fields
   productsField.value = cart.map(i => `${i.name} x${i.quantity}`).join(", ");
-  const subtotal = cart.reduce((acc,i) => acc + i.price*i.quantity,0);
-  const delivery = subtotal > 199 ? 0 : 50;
-  const grandTotal = subtotal + delivery;
   totalField.value = `Rs ${grandTotal}`;
 
-  // Ask user to confirm
+  // Confirm order
   e.preventDefault(); // prevent default first
   if(confirm(`Confirm your order of total ${totalField.value}?`)) {
-    // Temporarily submit to iframe
+    // Submit to iframe (or Google form)
     orderForm.submit();
 
-    // Clear cart after confirmation
+    // Clear cart
     localStorage.removeItem("cart");
     renderCart();
 
