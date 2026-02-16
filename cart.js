@@ -14,7 +14,7 @@ const submitButton = orderForm.querySelector("button");
 
 // ===== RENDER CART =====
 function renderCart() {
-  // Always read the latest cart from localStorage
+
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   container.innerHTML = "";
 
@@ -32,14 +32,19 @@ function renderCart() {
   let subtotal = 0;
 
   cart.forEach((item, index) => {
-    subtotal += Number(item.price) * item.quantity; // convert to number
+
+    // Ensure price is treated as number
+    const price = Number(item.price);
+    const quantity = Number(item.quantity);
+
+    subtotal += price * quantity;
 
     const div = document.createElement("div");
     div.classList.add("cart-item");
     div.innerHTML = `
       <h4>${item.name}</h4>
-      <p>Price: Rs ${item.price}</p>
-      <p>Quantity: ${item.quantity}</p>
+      <p>Price: Rs ${price}</p>
+      <p>Quantity: ${quantity}</p>
       <div class="cart-buttons">
         <button onclick="increase(${index})">+</button>
         <button onclick="decrease(${index})">-</button>
@@ -49,13 +54,20 @@ function renderCart() {
     container.appendChild(div);
   });
 
-  // Free delivery above Rs 399
+  // ===== DELIVERY LOGIC =====
+  // FREE only if subtotal MORE THAN 399
   let deliveryCharge = subtotal > 399 ? 0 : 65;
 
-  deliveryDisplay.textContent = deliveryCharge === 0 ? "Delivery: Free 🎉🎉🎉" : `Delivery: Rs ${deliveryCharge}`;
-  deliveryDisplay.style.color = deliveryCharge === 0 ? "#3A7D44" : "#FF7A18";
+  if (deliveryCharge === 0) {
+    deliveryDisplay.textContent = "Delivery: Free 🎉🎉🎉";
+    deliveryDisplay.style.color = "#3A7D44";
+  } else {
+    deliveryDisplay.textContent = "Delivery: Rs 65";
+    deliveryDisplay.style.color = "#FF7A18";
+  }
 
   const grandTotal = subtotal + deliveryCharge;
+
   subtotalDisplay.textContent = `Subtotal: Rs ${subtotal}`;
   grandTotalDisplay.textContent = `Total: Rs ${grandTotal}`;
 
@@ -68,14 +80,16 @@ function renderCart() {
 // ===== CART FUNCTIONS =====
 function increase(i) { 
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart[i].quantity++;
+  cart[i].quantity = Number(cart[i].quantity) + 1;
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
 }
 
 function decrease(i) { 
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  if (cart[i].quantity > 1) cart[i].quantity--;
+  if (Number(cart[i].quantity) > 1) {
+    cart[i].quantity = Number(cart[i].quantity) - 1;
+  }
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
 }
@@ -92,37 +106,39 @@ renderCart();
 
 // ===== ORDER FORM SUBMISSION =====
 orderForm.addEventListener("submit", function(e){
+
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  // Block empty cart
   if(cart.length === 0){
     e.preventDefault();
     alert("⚠️ Cannot place order! Your cart is empty.");
     return;
   }
 
-  // Calculate totals
-  const subtotal = cart.reduce((acc, i) => acc + Number(i.price) * i.quantity, 0);
+  const subtotal = cart.reduce((acc, i) => {
+    return acc + Number(i.price) * Number(i.quantity);
+  }, 0);
+
+  // SAME DELIVERY LOGIC HERE
   const deliveryCharge = subtotal > 399 ? 0 : 65;
   const grandTotal = subtotal + deliveryCharge;
 
-  // Populate hidden fields
   productsField.value = cart.map(i => `${i.name} x${i.quantity}`).join(", ");
   totalField.value = `Rs ${grandTotal}`;
 
-  // Confirm order
-  e.preventDefault(); // prevent default first
-  if(confirm(`Confirm your order of total ${totalField.value}?`)) {
-    // Submit to iframe (or Google form)
+  e.preventDefault();
+
+  if(confirm(`Confirm your order of total Rs ${grandTotal}?`)) {
+
     orderForm.submit();
 
-    // Clear cart
     localStorage.removeItem("cart");
     renderCart();
 
     alert("✅ Order Confirmed! Your cart has been cleared.");
+
   } else {
     submitButton.disabled = false;
   }
-});
 
+});
