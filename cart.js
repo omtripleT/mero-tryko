@@ -49,10 +49,10 @@ function renderCart() {
     container.appendChild(div);
   });
 
-  // Free delivery above Rs 199
-  let deliveryCharge = subtotal > 199 ? 0 : 50;
+  // Free delivery above Rs 399
+  let deliveryCharge = subtotal > 399 ? 0 : 65;
 
-  deliveryDisplay.textContent = deliveryCharge === 0 ? "Delivery: Free 🎉" : `Delivery: Rs ${deliveryCharge}`;
+  deliveryDisplay.textContent = deliveryCharge === 0 ? "Delivery: Free 🎉🎉🎉" : `Delivery: Rs ${deliveryCharge}`;
   deliveryDisplay.style.color = deliveryCharge === 0 ? "#3A7D44" : "#FF7A18";
 
   const grandTotal = subtotal + deliveryCharge;
@@ -103,7 +103,7 @@ orderForm.addEventListener("submit", function(e){
 
   // Calculate totals
   const subtotal = cart.reduce((acc, i) => acc + Number(i.price) * i.quantity, 0);
-  const deliveryCharge = subtotal > 199 ? 0 : 50;
+  const deliveryCharge = subtotal > 399 ? 0 : 65;
   const grandTotal = subtotal + deliveryCharge;
 
   // Populate hidden fields
@@ -125,3 +125,4 @@ orderForm.addEventListener("submit", function(e){
     submitButton.disabled = false;
   }
 });
+
