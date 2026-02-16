@@ -312,3 +312,29 @@ body{
         grid-template-columns: repeat(4,1fr);
     }
 }
+
+
+
+/*intro*/
+.intro {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+.intro-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.intro h2 {
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.intro p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
