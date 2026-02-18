@@ -182,7 +182,8 @@ body{
     background: #C68642;
 }
 .footer{
-    background: rgb(234, 231, 231);
+    padding: 1rem;
+    background: white;
     text-align: center;
 }
 .footer h3{
