@@ -2,84 +2,294 @@
 <html>
 <head>
   <title>Mero Tryko | Cart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Mero Tryko | Cart - Review & Confirm Your Order</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Basic -->
+  <meta name="description" content="Review your selected snacks, pickles and desserts in the Mero Tryko cart. Confirm your order easily with home delivery in Nepal.">
+  <meta name="keywords" content="Mero Tryko cart, Nepal snacks order, buy pickles online Nepal, confirm order Mero Tryko">
+  <meta name="author" content="Mero Tryko">
+  <meta name="robots" content="noindex, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mero Tryko Cart - Confirm Your Order">
+  <meta property="og:description" content="Review and confirm your homemade snacks and pickle order from Mero Tryko.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://merotryko.me/cart.html">
+  <meta property="og:image" content="https://merotryko.me/image/thekuwa.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mero Tryko Cart">
+  <meta name="twitter:description" content="Confirm your Mero Tryko homemade snacks and pickle order.">
+  <meta name="twitter:image" content="https://merotryko.me/image/thekuwa.png">
 
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* Your existing CSS here (cart layout, buttons, form, etc.) */
-    body{ background:#FAF7F2; font-family:'Segoe UI',Arial,sans-serif; margin:0; padding:0;}
-    .cart-header{ background:#FFF; padding:1.2rem 0; text-align:center; box-shadow:0 4px 15px rgba(0,0,0,0.08);}
-    .cart-header h1{ color:#3A7D44; font-size:28px; margin:0; text-transform:capitalize;}
-    .cart-section{ padding:2rem 1rem; max-width:1200px; margin:auto;}
-    .cart-title{text-align:center;margin-bottom:2rem;color:#C68642;font-size:24px;text-transform:capitalize;}
-    .cart-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;}
-    .cart-item{background:#FFF;padding:1.5rem;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.08);transition:0.3s ease;}
-    .cart-item:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.12);}
-    .cart-item h4{font-size:18px;margin-bottom:0.5rem;color:#333;}
-    .cart-item p{font-size:14px;color:#555;}
-    .cart-buttons{margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap;}
-    .cart-buttons button{padding:0.5rem 1rem;border:none;border-radius:25px;cursor:pointer;background:#3A7D44;color:white;font-weight:500;transition:0.3s;}
-    .cart-buttons button:hover{background:#2F5D34;}
-    .cart-summary{text-align:center;margin-top:2rem;}
-    #subtotal, #delivery, #grand-total{font-size:18px;color:#2C2C2C;margin-bottom:0.5rem;}
-    .order-form{background:#FFF;padding:2.5rem 2rem;border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,0.08);margin:3rem auto;max-width:480px;transition:0.3s;}
-    .order-form h3{color:#3A7D44;margin-bottom:1.5rem;font-size:22px;text-align:center;letter-spacing:0.5px;}
-    .order-form input{width:100%;padding:0.9rem 1rem;margin-bottom:1rem;border-radius:10px;border:1px solid #ddd;font-size:15px;transition:0.3s;}
-    .order-form input:focus{border-color:#FF7A18;outline:none;box-shadow:0 0 8px rgba(255,122,24,0.2);}
-    .order-form input[readonly]{background:#f9f9f9;color:#555;}
-    .order-form button{width:100%;background:#FF7A18;color:white;padding:0.9rem;font-size:17px;font-weight:600;border:none;border-radius:25px;cursor:pointer;transition:0.3s;}
-    .order-form button:hover{background:#C68642;}
-    .home{text-align:center;margin-top:1.5rem;}
-    .home a{color:#fff;text-decoration:none;border:none;border-radius:16px;background:#3A7D44;padding:0.5rem;text-transform:capitalize;font-size:16px;}
-    .home a:hover{background:#2F5D34;}
-    .offer{text-align:center;text-transform:capitalize;font-size:16px;}
+    body{
+  background:#FAF7F2;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin:0;
+  padding:0;
+}
+
+/* Header */
+.cart-header{
+  background:#FFFFFF;
+  padding:1.2rem 0;
+  text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+  position: sticky;
+  top:0;
+  z-index:100;
+}
+.cart-header h1{
+  color:#3A7D44;
+  font-size:28px;
+  margin:0;
+  text-transform: capitalize;
+}
+
+/* Section */
+.cart-section{
+  padding:2rem 1rem;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* Title */
+.cart-title{
+  text-align:center;
+  margin-bottom:2rem;
+  color:#C68642;
+  font-size:24px;
+  text-transform:capitalize;
+}
+
+/* Cart Container */
+.cart-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1.5rem;
+}
+
+/* Cart Items */
+.cart-item{
+  background:#FFFFFF;
+  padding:1.5rem;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  transition:0.3s ease;
+}
+.cart-item:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+.cart-item h4{
+  font-size:18px;
+  margin-bottom:0.5rem;
+  color:#333;
+}
+.cart-item p{
+  font-size:14px;
+  color:#555;
+}
+.cart-buttons{
+  margin-top:1rem;
+  display:flex;
+  gap:0.5rem;
+  flex-wrap:wrap;
+}
+.cart-buttons button{
+  padding:0.5rem 1rem;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  background:#3A7D44;
+  color:white;
+  font-weight:500;
+  transition:0.3s;
+}
+.cart-buttons button:hover{
+  background:#2F5D34;
+}
+
+/* Cart Summary */
+.cart-summary{
+  text-align:center;
+  margin-top:2rem;
+}
+#subtotal, #delivery, #grand-total{
+  font-size:18px;
+  color:#2C2C2C;
+  margin-bottom:0.5rem;
+}
+
+/* Order Form */
+.order-form{
+  background:#FFFFFF;
+  padding:2.5rem 2rem;
+  border-radius:16px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  margin:3rem auto;
+  max-width: 480px;
+  transition:0.3s;
+}
+.order-form:hover{
+  box-shadow:0 10px 30px rgba(0,0,0,0.12);
+}
+.order-form h3{
+  color:#3A7D44;
+  margin-bottom:1.5rem;
+  font-size:22px;
+  text-align:center;
+  letter-spacing:0.5px;
+}
+.order-form input{
+  width:100%;
+  padding:0.9rem 1rem;
+  margin-bottom:1rem;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-size:15px;
+  transition:0.3s;
+}
+.order-form input:focus{
+  border-color:#FF7A18;
+  outline:none;
+  box-shadow:0 0 8px rgba(255,122,24,0.2);
+}
+.order-form input[readonly]{
+  background:#f9f9f9;
+  color:#555;
+}
+.order-form button{
+  width:100%;
+  background:#FF7A18;
+  color:white;
+  padding:0.9rem;
+  font-size:17px;
+  font-weight:600;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  transition:0.3s;
+}
+.order-form button:hover{
+  background:#C68642;
+}
+.home{
+  text-align:center;
+  margin-top:1.5rem;
+}
+.home a{
+  color: #ffff;
+  text-decoration: none;
+  border: none;
+  border-radius: 16px;
+  background: #3A7D44;
+  padding: 0.5rem;
+  text-transform: capitalize;
+  font-size: 16px;
+}
+.home a:hover{
+  background: #2F5D34;
+}
+
+/*offer*/
+.offer{
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 16px;
+}
+/* Responsive */
+@media(max-width:768px){
+  .cart-container{
+    grid-template-columns:1fr;
+  }
+  .cart-item{
+    text-align:center;
+  }
+  .cart-buttons{
+    justify-content:center;
+  }
+  .order-form{
+    padding:2rem 1.5rem;
+  }
+}
+@media(max-width:480px){
+  .cart-header h1{
+    font-size:24px;
+  }
+  .cart-title{
+    font-size:20px;
+  }
+  .order-form h3{
+    font-size:20px;
+  }
+  .order-form input, .order-form button{
+    font-size:15px;
+    padding:0.8rem;
+  }
+}
+
   </style>
 </head>
+
 <body>
 
-<header class="cart-header">
-  <h1><span style="color: #2C2C2C;">Mero</span> Tryko</h1>
-</header>
+  <!-- Header -->
+  <header class="cart-header">
+    <h1><span style="color: #2C2C2C;">Mero</span> Tryko</h1>
+  </header>
 
-<section class="cart-section">
-  <h2 class="cart-title">Your Cart</h2>
+  <!-- Cart Section -->
+  <section class="cart-section">
+    <h2 class="cart-title">Your Cart</h2>
 
-  <div id="cart-container" class="cart-container"></div>
+    <!-- Cart Items -->
+    <div id="cart-container" class="cart-container"></div>
 
-  <div class="cart-summary">
-    <p id="subtotal"></p>
-    <p id="delivery"></p>
-    <h3 id="grand-total"></h3>
+    <!-- Cart Summary -->
+    <div class="cart-summary">
+      <p id="subtotal"></p>
+      <p id="delivery"></p>
+      <h3 id="grand-total"></h3>
+    </div>
+    <div class="offer">
+      <p>buy more than<span style="color: orange;"> rs 399</span></p>
+      <p>get free <span style="color: #3A7D44;">home delivery</span></p>
+    </div>
+
+    <!-- Embedded Order Form -->
+    <div class="order-form">
+  <h3>Confirm Your Order</h3>
+  <form id="google-order-form" target="hidden_iframe" method="POST" 
+        action="https://docs.google.com/forms/d/e/1FAIpQLSfbCHs2JT1Cl6nFo_O3Bn6B-vSlM-6ZCnx0-WWv-TwFIrM8QQ/formResponse">
+    <input type="text" name="entry.1101735893" placeholder="Name" required>
+    <input type="text" name="entry.219737293" placeholder="Address" required>
+    <input type="tel" name="entry.1150942445" placeholder="Phone" required>
+    <input type="email" name="entry.69980070" placeholder="Email" required>
+    <input type="text" name="entry.585765572" id="form-products" readonly>
+    <input type="text" name="entry.1021136203" id="form-total" readonly>
+    <input type="email" name="entry.69980070" placeholder="Email" required>
+    <button type="submit">Confirm Order</button>
+  </form>
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+</div>
+<div class="home">
+    <a href="index.html">back to home</a>
   </div>
+  </section>
 
-  <div class="offer">
-    <p>Buy more than <span style="color: orange;">Rs 399</span></p>
-    <p>Get free <span style="color: #3A7D44;">home delivery</span></p>
-  </div>
-
-  <!-- Embedded Google Form -->
-  <div class="order-form">
-    <h3>Confirm Your Order</h3>
-    <form id="google-order-form" target="hidden_iframe" method="POST" 
-          action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse">
-      <input type="text" name="entry.1101735893" placeholder="Name" required>
-      <input type="text" name="entry.219737293" placeholder="Address" required>
-      <input type="tel" name="entry.1150942445" placeholder="Phone" required>
-      <!-- REMOVE EMAIL FIELD if Verified is ON -->
-      <input type="text" name="entry.585765572" id="form-products" readonly>
-      <input type="text" name="entry.1021136203" id="form-total" readonly>
-      <button type="submit">Confirm Order</button>
-    </form>
-    <iframe name="hidden_iframe" style="display:none;"></iframe>
-  </div>
-
-  <div class="home">
-    <a href="index.html">Back to Home</a>
-  </div>
-</section>
-
-<script src="cart.js"></script>
+  <!-- Link to JS -->
+  <script src="cart.js"></script>
 </body>
 </html>
+
+
+
