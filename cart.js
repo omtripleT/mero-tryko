@@ -1,6 +1,5 @@
 // ===== CART PAGE SCRIPT =====
 
-// Get elements
 const container = document.getElementById("cart-container");
 const subtotalDisplay = document.getElementById("subtotal");
 const deliveryDisplay = document.getElementById("delivery");
@@ -14,7 +13,6 @@ const submitButton = orderForm.querySelector("button");
 
 // ===== RENDER CART =====
 function renderCart() {
-
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   container.innerHTML = "";
 
@@ -32,11 +30,8 @@ function renderCart() {
   let subtotal = 0;
 
   cart.forEach((item, index) => {
-
-    // Ensure price is treated as number
     const price = Number(item.price);
     const quantity = Number(item.quantity);
-
     subtotal += price * quantity;
 
     const div = document.createElement("div");
@@ -54,20 +49,12 @@ function renderCart() {
     container.appendChild(div);
   });
 
-  // ===== DELIVERY LOGIC =====
-  // FREE only if subtotal MORE THAN 399
+  // DELIVERY
   let deliveryCharge = subtotal > 399 ? 0 : 19;
-
-  if (deliveryCharge === 0) {
-    deliveryDisplay.textContent = "Delivery: Free 🎉🎉🎉🎉🎉🎉";
-    deliveryDisplay.style.color = "#3A7D44";
-  } else {
-    deliveryDisplay.textContent = "Delivery: Rs 19";
-    deliveryDisplay.style.color = "#FF7A18";
-  }
+  deliveryDisplay.textContent = deliveryCharge === 0 ? "Delivery: Free 🎉" : `Delivery: Rs ${deliveryCharge}`;
+  deliveryDisplay.style.color = deliveryCharge === 0 ? "#3A7D44" : "#FF7A18";
 
   const grandTotal = subtotal + deliveryCharge;
-
   subtotalDisplay.textContent = `Subtotal: Rs ${subtotal}`;
   grandTotalDisplay.textContent = `Total: Rs ${grandTotal}`;
 
@@ -106,7 +93,6 @@ renderCart();
 
 // ===== ORDER FORM SUBMISSION =====
 orderForm.addEventListener("submit", function(e){
-
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   if(cart.length === 0){
@@ -115,32 +101,31 @@ orderForm.addEventListener("submit", function(e){
     return;
   }
 
-  const subtotal = cart.reduce((acc, i) => {
-    return acc + Number(i.price) * Number(i.quantity);
-  }, 0);
-
-  // SAME DELIVERY LOGIC HERE
+  const subtotal = cart.reduce((acc,i) => acc + Number(i.price)*Number(i.quantity),0);
   const deliveryCharge = subtotal > 399 ? 0 : 19;
   const grandTotal = subtotal + deliveryCharge;
 
+  // Fill hidden fields before submission
   productsField.value = cart.map(i => `${i.name} x${i.quantity}`).join(", ");
   totalField.value = `Rs ${grandTotal}`;
 
+  // Block unrealistic quantities or totals (spam protection)
+  for(let item of cart){
+    if(Number(item.quantity) > 50 || grandTotal > 20000){
+      e.preventDefault();
+      alert("⚠️ Suspicious order detected!");
+      return;
+    }
+  }
+
   e.preventDefault();
 
-  if(confirm(`Confirm your order of total Rs ${grandTotal}?`)) {
-
+  if(confirm(`Confirm your order of total Rs ${grandTotal}?`)){
     orderForm.submit();
-
     localStorage.removeItem("cart");
     renderCart();
-
     alert("✅ Order Confirmed! Your cart has been cleared.");
-
   } else {
     submitButton.disabled = false;
   }
-
 });
-
-
