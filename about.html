@@ -1,278 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panipuri House</title>
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <style>
+    :root{
+  --red:#D62828;
+  --gold:#F4B400;
+  --cream:#FFF8E7;
+  --orange:#FF7A18;
+  --green:#3A7D44;
+  --dark:#1c1c1c;
+  --blue: rgb(21, 176, 238);
+}
 
-    <!-- SEO Basic -->
-    <title>About Mero Tryko | Homemade Snacks & Pickles in Nepal</title>
-    <meta name="description" content="Learn about Mero Tryko, a homemade snack and pickle brand from Malangwa-4, Sarlahi, Nepal. Fresh traditional snacks, desserts and pickles made with love and care.">
-    <meta name="keywords" content="Mero Tryko, About Mero Tryko, Nepal homemade snacks, Sarlahi snacks, Malangwa food, traditional pickles Nepal">
-    <meta name="author" content="Mero Tryko">
-    <meta name="robots" content="index, follow">
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    <!-- Open Graph (Facebook & Social Media) -->
-    <meta property="og:title" content="About Mero Tryko - Made With Love">
-    <meta property="og:description" content="Discover the story behind Mero Tryko. Traditional homemade snacks and pickles from Nepal.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://merotryko.me/about.html">
-    <meta property="og:image" content="https://merotryko.me/image/thekuwa.png">
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:var(--cream);
+  color:#222;
+}
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="About Mero Tryko">
-    <meta name="twitter:description" content="Homemade snacks and pickles from Malangwa, Sarlahi, Nepal.">
-    <meta name="twitter:image" content="https://merotryko.me/image/thekuwa.png">
+/* ================= NAVBAR ================= */
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+.navbar{
+  width:100%;
+background: linear-gradient(
+  180deg,
+  #EFFF9A 0%,
+  #D8FF4F 30%,
+  #A8F21B 65%,
+  #65C91A 100%
+);
+  padding:2px 12px 4px 16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+  /* margin-bottom: 40px; */
+}
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
 
+.logo img {
+  width: 88px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+}
 
-    <title>aboutus</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+.logo-name{
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: var(--green);
+}
 
-        body {
-            background: white;
-            font-family: Arial, sans-serif;
-        }
+.logo-name span{
+  color: var(--orange);
+  font-weight: 800;
+}
 
-        .header {
-            border: none;
-            padding: 1.6rem;
-            background: whitesmoke;
-            border-radius: 2px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+.hamburger{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.hamburger span{
+  width:25px;
+  height:3px;
+  background: linear-gradient(
+    to bottom right,
+    #FFD54F,
+    #FF9800,
+    #FF3D00,
+    #D50000
+  );
+  border-radius:10px;
+  transition:0.3s;
+}
 
-        .logo h3 {
-            font-size: 24px;
-        }
+.nav-menu{
+  position:fixed;
+  top:70px;
+  right:-100%;
+  width:160px;
+  list-style:none;
+  padding:20px;
+  border-radius:20px 0 0 20px;
+  transition:0.4s;
+  box-shadow:-5px 0 20px rgba(0,0,0,0.1);
+  text-transform: capitalize;
+  background: linear-gradient(
+  180deg,
+  #EFFF9A 0%,
+  #D8FF4F 30%,
+  #A8F21B 65%,
+  #65C91A 100%
+);
+}
 
-        .aboutus {
-            padding: 1rem;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
+.nav-menu.active{
+  right:0;
+}
 
-        .box {
-            padding: 1rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border: 2px solid orange;
-            border-radius: 16px;
-            gap: 2rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+.nav-menu li{
+  margin:20px 0;
+}
 
-        }
+.nav-menu a{
+  text-decoration:none;
+  color: black;
+  font-weight:bold;
+  position:relative;
+  transition:0.3s;
+}
 
-        /*for contact/location*/
-        .areabox {
-            background: white;
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
+.nav-menu a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:0%;
+  height:3px;
+  background:var(--orange);
+  border-radius:10px;
+  transition:0.4s;
+}
 
-        .areabox h3 {
-            text-align: center;
-            text-transform: capitalize;
-            font-size: 24px;
-            margin-bottom: 0.8rem;
-        }
+.nav-menu a:hover::after{
+  width:100%;
+}
 
-        .area {
-            margin-bottom: 2rem;
-            border: 2px solid orange;
-            border-radius: 16px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-        }
+.nav-menu a:hover{
+  color:var(--red);
+}
 
-        .info {
-            font-size: 16px;
-            line-height: 1.2rem;
-            text-align: left;
-        }
+.hamburger.open span:nth-child(1){
+  transform: translateY(8px) rotate(45deg);
+}
 
-        .box1 {
-            padding: 1rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border: none;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-            gap: 2rem;
+.hamburger.open span:nth-child(2){
+  opacity:0;
+}
 
-        }
+.hamburger.open span:nth-child(3){
+  transform: translateY(-8px) rotate(-45deg);
+}
 
-        .location h4 {
-            margin-bottom: 0.6rem;
-            font-size: 16px;
-            text-align: center;
-        }
+/* ================= DESKTOP NAV ================= */
 
-        .home {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+@media(min-width:768px){
 
-        .home a {
-            color: #ffff;
-            text-decoration: none;
-            border: none;
-            border-radius: 16px;
-            background: #3A7D44;
-            padding: 0.5rem;
-            text-transform: capitalize;
-            font-size: 16px;
-        }
+  .navbar{
+    padding:18px 60px;
+  }
 
-        .home a:hover {
-            background: #2F5D34;
-        }
+  .hamburger{
+    display:none;
+  }
 
-        .footer {
-            background: whitesmoke;
-            padding: 1rem 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+  .nav-menu{
+    position:static;
+    width:auto;
+    background:none;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:35px;
+    padding:0;
+    box-shadow:none;
+    right:0;
+    border-radius:0;
+   
+  }
 
-        .footer h3 {
-            font-size: 24px;
-            text-transform: capitalize;
-            margin-bottom: 0.8rem;
-        }
+  .nav-menu li{
+    margin:0;
+  }
 
-        .link a {
-            color: black;
-            margin-left: 0.6rem;
-        }
-
-        .link a:hover {
-            color: #3A7D44;
-
-        }
-
-        @media(min-width: 768px) {
-            .box {
-                max-width: 440px;
-            }
-
-            .box1 {
-                max-width: 440px;
-            }
-        }
-    </style>
+}
+  </style>
 </head>
+  <body>
+    <!-- ================= NAVBAR ================= -->
 
-<body>
-    <header class="header">
-        <div class="logo">
-            <h3>About <span style="color: #3A7D44;">us</span></h3>
-        </div>
-    </header>
-    <section class="aboutus">
-        <div class="box">
-            <div class="about">
-                <p class="info">
-                    <h2 style="text-align:center; color:#C68642; margin-bottom:1rem;">
-  🌿 About Mero Tryko
-</h2>
+<nav class="navbar">
+  <div class="logo">
+    <img src="merotryko2.jpeg" alt="Panipuri House">
+    <h5 class="logo-name"><span>I Like It...</span></h5>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-<p>
-  🏡 <strong>At Mero Tryko</strong>, we believe that the best flavors come from home.  
-  Our journey started with a simple idea — to bring traditional homemade snacks, pickles, and desserts to every household with the same care and love we prepare for our own family.
-</p>
-
-<br>
-
-<p>
-  🌾 Every product is locally made using fresh ingredients, authentic recipes, and traditional methods passed down through generations.  
-  We don’t just prepare food — we prepare memories, comfort, and happiness in every bite.
-</p>
-
-<br>
-
-<p>
-  🌶️ From spicy pickles to sweet homemade desserts 🍰, everything at <strong>Mero Tryko</strong> is made with love ❤️, care 🤍, and dedication.
-</p>
-
-<br>
-
-<p style="text-align:center; font-weight:bold; color:#3A7D44;">
-  🌿“तराईको स्वाद अब तपाईँलाई पनि”🌿
-</p>
-
-
-<span style="color: #3A7D44;">Made With Care</span>
-<span style="color: black;">Made With Love</span>
-<span style="color: orange;">Made At Home</span>
-</p>
-            </div>
-    </section>
-
-    <!--located at-->
-    <section class="areabox">
-        <h3>we are <span style="color: #3A7D44;">located</span> at:</h3>
-        <dic class="area">
-            <div class="box1">
-                <div class="location">
-                    <h4>Malangwa-4</h4>
-                    <h4>Sarlahi</h4>
-                    <h4>Nepal</h4>
-                    <h4>phone:9745829350</h5>
-                        <h4>email:omtriplet3@gmail.com</h5>
-                </div>
-            </div>
-            </div>
-            
-    </section>
-    <div class="home">
-                <a href="index.html">back to home</a>
-            </div>
-
-
-
-    <!--footer-->
-    <footer class="footer">
-        <h3>mero <span style="color: #3A7D44;">Tryko</span></h3>
-        <div class="link">
-            <a href="https://call.whatsapp.com/video/UnmIADa2hhuK3L3g6UI3wh"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></href>
-            <a href="mailto:omtriplet3@gmail.com"><i class="fa-brands fa-envelope"></i></a>
-        </div>
-    </footer>
-
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="about.php">About</a></li>
+    <li><a href="shop.php">shop</a></li>
+    <li><a href="login.php">Login</a></li>
+    <li><a href="register.php">Register</a></li>
+    <li><a href="logout.php">Logout</a></li>
+    <li><a href="employeepanel.php">employee</a></li>
+    <li><a href="admin/admin.php">admin</a></li>
+    <li><a href="dashboard.php"><i class="fas fa-user"></i> account</a></li>
+  </ul>
+</nav> 
 </body>
-
 </html>
-
-
