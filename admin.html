@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - Mero Tryko</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f7f7f7;
+    color:#222;
+}
+
+/* NAVBAR */
+.navbar{
+    height:70px;
+    width:100%;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+}
+
+.logo{
+    width:48px;
+    height:48px;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.nav-center{
+    text-align:center;
+    line-height:1.2;
+}
+
+.nav-center h2{
+    color:#D62828;
+    font-size:20px;
+}
+
+.nav-center p{
+    color:#555;
+    font-size:13px;
+    margin-top:3px;
+}
+
+.home-btn{
+    text-decoration:none;
+    background:#D62828;
+    color:#fff;
+    padding:10px 18px;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:600;
+}
+
+/* MAIN ADMIN AREA */
+.admin-wrapper{
+    display:flex;
+    min-height:100vh;
+    padding-top:70px;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:250px;
+    background:#fff;
+    border-right:1px solid #e5e5e5;
+    padding:25px 15px;
+    position:fixed;
+    top:70px;
+    left:0;
+    bottom:0;
+    overflow-y:auto;
+}
+
+.admin-profile{
+    text-align:center;
+    padding-bottom:25px;
+    border-bottom:1px solid #eee;
+    margin-bottom:20px;
+}
+
+.admin-profile img{
+    width:82px;
+    height:82px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #F4B400;
+    margin-bottom:10px;
+}
+
+.admin-profile h3{
+    font-size:17px;
+    color:#222;
+}
+
+.admin-profile p{
+    font-size:13px;
+    color:#888;
+    margin-top:4px;
+}
+
+.sidebar-menu{
+    list-style:none;
+}
+
+.sidebar-menu li{
+    margin-bottom:7px;
+}
+
+.sidebar-menu a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 14px;
+    border-radius:8px;
+    text-decoration:none;
+    color:#444;
+    font-size:14px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active{
+    background:#FFF1E6;
+    color:#D62828;
+}
+
+.sidebar-menu .icon{
+    width:22px;
+    text-align:center;
+    font-size:17px;
+}
+
+.logout{
+    margin-top:18px;
+    border-top:1px solid #eee;
+    padding-top:18px;
+}
+
+.logout a{
+    color:#D62828;
+}
+
+/* CONTENT */
+.content{
+    margin-left:250px;
+    width:calc(100% - 250px);
+    padding:35px;
+}
+
+.content-card{
+    background:#fff;
+    border-radius:14px;
+    padding:35px;
+    min-height:500px;
+    box-shadow:0 3px 15px rgba(0,0,0,.06);
+}
+
+.content-card h1{
+    font-size:28px;
+    color:#D62828;
+    margin-bottom:10px;
+}
+
+.content-card p{
+    color:#777;
+    font-size:15px;
+}
+
+/* DASHBOARD BOXES */
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-top:30px;
+}
+
+.dashboard-box{
+    padding:22px;
+    border-radius:12px;
+    background:#FFF8E7;
+    border:1px solid #f1e5c7;
+}
+
+.dashboard-box h3{
+    font-size:14px;
+    color:#777;
+    margin-bottom:10px;
+}
+
+.dashboard-box strong{
+    font-size:27px;
+    color:#D62828;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .dashboard-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .nav-center h2{
+        font-size:17px;
+    }
+
+    .sidebar{
+        width:220px;
+    }
+
+    .content{
+        margin-left:220px;
+        width:calc(100% - 220px);
+    }
+}
+
+@media(max-width:650px){
+    .navbar{
+        padding:0 15px;
+        height:62px;
+    }
+
+    .logo{
+        width:42px;
+        height:42px;
+    }
+
+    .nav-center h2{
+        font-size:15px;
+    }
+
+    .nav-center p{
+        font-size:11px;
+    }
+
+    .home-btn{
+        padding:8px 11px;
+        font-size:12px;
+    }
+
+    .admin-wrapper{
+        padding-top:62px;
+    }
+
+    .sidebar{
+        top:62px;
+        width:190px;
+        padding:18px 10px;
+    }
+
+    .admin-profile img{
+        width:65px;
+        height:65px;
+    }
+
+    .admin-profile h3{
+        font-size:14px;
+    }
+
+    .sidebar-menu a{
+        padding:10px 9px;
+        font-size:12px;
+        gap:8px;
+    }
+
+    .content{
+        margin-left:190px;
+        width:calc(100% - 190px);
+        padding:20px 12px;
+    }
+
+    .content-card{
+        padding:22px 17px;
+    }
+
+    .content-card h1{
+        font-size:22px;
+    }
+
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <img src="merotryko2.jpeg" class="logo" alt="Mero Tryko">
+
+    <div class="nav-center">
+        <h2>Make It Possible</h2>
+        <p>Om Prakash Kumar Sah</p>
+    </div>
+
+    <a href="#" class="home-btn">Home</a>
+</header>
+
+<div class="admin-wrapper">
+
+    <aside class="sidebar">
+
+        <div class="admin-profile">
+            <img src="merotryko2.jpeg" alt="Admin">
+            <h3>Om Prakash Kumar Sah</h3>
+            <p>@admin</p>
+        </div>
+
+        <ul class="sidebar-menu">
+
+            <li>
+                <a href="#" class="active">
+                    <span class="icon">📊</span>
+                    <span>Total Info</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon">➕</span>
+                    <span>Add</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon">👥</span>
+                    <span>Users</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon">🧑‍💼</span>
+                    <span>Employee</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon">🏪</span>
+                    <span>Outlet</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon">⭐</span>
+                    <span>User Review</span>
+                </a>
+            </li>
+
+            <li class="logout">
+                <a href="#">
+                    <span class="icon">↪</span>
+                    <span>Logout</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <main class="content">
+
+        <div class="content-card">
+
+            <h1>Welcome To Dashboard</h1>
+            <p>Admin Panel</p>
+
+            <div class="dashboard-grid">
+
+                <div class="dashboard-box">
+                    <h3>Total Users</h3>
+                    <strong>0</strong>
+                </div>
+
+                <div class="dashboard-box">
+                    <h3>Total Employees</h3>
+                    <strong>0</strong>
+                </div>
+
+                <div class="dashboard-box">
+                    <h3>Total Outlets</h3>
+                    <strong>0</strong>
+                </div>
+
+                <div class="dashboard-box">
+                    <h3>Total Reviews</h3>
+                    <strong>0</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>
