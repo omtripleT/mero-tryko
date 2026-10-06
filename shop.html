@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop – Mero Tryko</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <style>
+    :root{
+      --red:#D62828;
+      --gold:#F4B400;
+      --cream:#FFF8E7;
+      --orange:#FF7A18;
+      --green:#3A7D44;
+      --dark:#1c1c1c;
+    }
+
+    *{ margin:0; padding:0; box-sizing:border-box; }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--cream);
+      color:#222;
+    }
+
+    /* ================= NAVBAR ================= */
+.page-header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  padding:12px 18px;
+  background: linear-gradient(
+  180deg,
+  #EFFF9A 0%,
+  #D8FF4F 30%,
+  #A8F21B 65%,
+  #65C91A 100%
+);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,0.05);
+  animation:fadeUp .5s ease both;
+  /* margin-bottom:32px; */
+}
+
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.nav-left{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.nav-left img{
+  width: 88px;
+  height: 64px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.nav-left h5{
+  font-size:8px;
+  margin-top:4px;
+  color:var(--green);
+  font-weight:600;
+  text-transform:capitalize;
+  white-space:nowrap;
+}
+
+.nav-center{
+  text-align:center;
+  flex:1;
+}
+
+.nav-center h3{
+  font-family:var(--font-head);
+  font-size:18px;
+  color:var(--dark);
+  font-weight:700;
+  margin-bottom:2px;
+}
+
+.nav-center p{
+  font-size:11px;
+  color:#888;
+  letter-spacing:.3px;
+}
+
+.nav-right a{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+    background: linear-gradient(
+    to bottom right,
+    #FFD54F,
+    #FF9800,
+    #FF3D00,
+    #D50000
+  );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  transition:.2s;
+}
+
+.nav-right a:hover{
+  transform:scale(1.08);
+  background:#dff1e2;
+}
+
+.nav-right i{
+  color:var(--green);
+  font-size:18px;
+}
+
+/* desktop navbar hidding */
+.navbardesktop{
+    display: none;
+}
+
+    /* ================= PAGE TITLE ================= */
+
+    .page-title{
+      text-align:center;
+      padding:30px 15px 10px;
+      margin-top:80px;
+    }
+
+    .page-title h1{
+      font-size:26px;
+      color:var(--dark);
+      margin-bottom:6px;
+    }
+
+    .page-title p{
+      font-size:14px;
+      color:#888;
+    }
+
+    .title-line{
+      width:60px;
+      height:4px;
+      background:linear-gradient(to right, var(--orange), var(--red));
+      border-radius:10px;
+      margin:10px auto 0;
+    }
+
+    /* ================= PRODUCTS ================= */
+
+    .menu-section{
+      padding:20px 15px 80px;
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:12px;
+    }
+
+    .menu-card{
+      background:white;
+      border-radius:16px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height:140px;
+      border:2px solid transparent;
+      background-image:
+        linear-gradient(white, white),
+        linear-gradient(to bottom right, #FFD54F, #FF9800, #FF3D00, #D50000);
+      background-origin:border-box;
+      background-clip:padding-box, border-box;
+      transition:box-shadow 0.3s, transform 0.3s;
+    }
+
+    .menu-card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .menu-image{
+      width:100%;
+      aspect-ratio:1 / 1;
+      overflow:hidden;
+    }
+
+    .menu-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform 0.3s;
+    }
+
+    .menu-card:hover .menu-image img{
+      transform:scale(1.05);
+    }
+
+    .menu-content{
+      flex:1;
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:6px;
+      text-transform:capitalize;
+    }
+
+    .menu-content h3{
+      font-size:16px;
+      margin:0;
+      color:var(--dark);
+    }
+
+    .price-box{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    .new-price{
+      color:var(--red);
+      font-weight:bold;
+    }
+
+    .menu-content p{
+      font-size:13px;
+      margin:0;
+      color:#555;
+    }
+
+    .menu-content button{
+      background:var(--green);
+      color:white;
+      border:none;
+      padding:8px;
+      width:100%;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .menu-content button:hover{
+      background:#2e6338;
+    }
+
+    @media(min-width:768px){
+      .menu-section{
+        grid-template-columns:repeat(4, 1fr);
+        gap:20px;
+        padding:20px 40px 80px;
+      }
+      .menu-image{
+        aspect-ratio:4 / 3;
+      }
+      .menu-content{
+        align-items:center;
+      }
+      .menu-content button{
+        width:100%;
+      }
+      .navbardesktop{
+  width: 100%;
+  background: linear-gradient(
+  180deg,
+  #EFFF9A 0%,
+  #D8FF4F 30%,
+  #A8F21B 65%,
+  #65C91A 100%
+);
+  padding: 18px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.logo img {
+  width: 88px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.logo-name {
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.logo-name span {
+  color: var(--orange);
+  font-weight: 800;
+}
+
+/* NAV MENU (always visible - desktop style) */
+.nav-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 35px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-transform: capitalize;
+}
+
+.nav-menu li {
+  margin: 0;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  transition: 0.3s;
+}
+
+/* hover underline effect */
+.nav-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 3px;
+  background: var(--orange);
+  border-radius: 10px;
+  transition: 0.4s;
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+.nav-menu a:hover {
+  color: var(--red);
+}
+    }
+
+    /* ================= FOOTER NAV ================= */
+
+    .footer-nav{
+      position:fixed;
+      bottom:0;
+      width:100%;
+      background:white;
+      display:flex;
+      justify-content:space-around;
+      padding:12px 0;
+      border-radius:25px 25px 0 0;
+      box-shadow:0 -3px 15px rgba(0,0,0,0.1);
+      border-top:2.5px solid rgb(21, 176, 238);
+    }
+
+    .footer-nav a{
+      text-decoration:none;
+      color: black;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      font-size:12px;
+      transition:0.3s;
+    }
+
+    .footer-nav a i{
+      font-size:22px;
+      margin-bottom:4px;
+      background:linear-gradient(to bottom right, #FFD54F, #FF9800, #FF3D00, #D50000);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    .footer-item{ text-align:center; color:var(--green); }
+
+    @media(min-width:768px){
+      .footer-nav{ display:none; }
+      .page-header{ display:none;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<div class="page-header">
+  <div class="navbar">
+    <div class="nav-left">
+      <img src="merotryko2.jpeg" alt="logo">
+      <h5><span style="color: var(--orange);">I Like It...</span></h5>
+    </div>
+
+    <div class="nav-right">
+      <a href="index.html">
+        <i class="fas fa-cart-shopping"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= DESKTOP NAVBAR ================= -->
+<nav class="navbardesktop">
+  <div class="logo">
+    <img src="merotryko2.jpeg" alt="Mero Tryko">
+    <h5 class="logo-name"><span>I Like It...</span></h5>
+  </div>
+
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="register.html">Register</a></li>
+    <li><a href="logout.html">Logout</a></li>
+    <li><a href="dashboard.html"><i class="fas fa-user"></i> Account</a></li>
+    <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+  </ul>
+</nav>
+
+<!-- ================= PAGE TITLE ================= -->
+<div class="page-title">
+  <h1>Our Menu</h1>
+  <p>Fresh, spicy and made with love</p>
+  <div class="title-line"></div>
+</div>
+
+<!-- ================= PRODUCTS ================= -->
+<section class="menu-section">
+
+  <div class="menu-card">
+    <div class="menu-image">
+      <img src="merotryko2.jpeg" alt="Panipuri">
+    </div>
+    <div class="menu-content">
+      <h3>Panipuri</h3>
+      <div class="price-box">
+        <span class="new-price">Rs 80</span>
+      </div>
+      <p>Fresh, spicy and full of Terai taste.</p>
+      <form onsubmit="return false;">
+        <button type="button" onclick="showCartMessage()">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="menu-card">
+    <div class="menu-image">
+      <img src="merotryko2.jpeg" alt="Chatpate">
+    </div>
+    <div class="menu-content">
+      <h3>Chatpate</h3>
+      <div class="price-box">
+        <span class="new-price">Rs 80</span>
+      </div>
+      <p>Crunchy, tangy and freshly prepared.</p>
+      <form onsubmit="return false;">
+        <button type="button" onclick="showCartMessage()">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="menu-card">
+    <div class="menu-image">
+      <img src="merotryko2.jpeg" alt="Dahipuri">
+    </div>
+    <div class="menu-content">
+      <h3>Dahipuri</h3>
+      <div class="price-box">
+        <span class="new-price">Rs 100</span>
+      </div>
+      <p>Creamy, refreshing and delicious.</p>
+      <form onsubmit="return false;">
+        <button type="button" onclick="showCartMessage()">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="menu-card">
+    <div class="menu-image">
+      <img src="merotryko2.jpeg" alt="Special Pani">
+    </div>
+    <div class="menu-content">
+      <h3>Special Pani</h3>
+      <div class="price-box">
+        <span class="new-price">Rs 30</span>
+      </div>
+      <p>Our refreshing signature pani.</p>
+      <form onsubmit="return false;">
+        <button type="button" onclick="showCartMessage()">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="menu-card">
+    <div class="menu-image">
+      <img src="merotryko2.jpeg" alt="Mero Special">
+    </div>
+    <div class="menu-content">
+      <h3>Mero Special</h3>
+      <div class="price-box">
+        <span class="new-price">Rs 120</span>
+      </div>
+      <p>A special Mero Tryko combination.</p>
+      <form onsubmit="return false;">
+        <button type="button" onclick="showCartMessage()">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="menu-card">
+    <div class="menu-image">
+      <img src="merotryko2.jpeg" alt="Family Combo">
+    </div>
+    <div class="menu-content">
+      <h3>Family Combo</h3>
+      <div class="price-box">
+        <span class="new-price">Rs 250</span>
+      </div>
+      <p>A tasty combo made for sharing.</p>
+      <form onsubmit="return false;">
+        <button type="button" onclick="showCartMessage()">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= FOOTER NAV ================= -->
+<footer class="footer-nav">
+  <a href="dashboard.html" class="footer-item">
+    <i class="fa-solid fa-user"></i>
+    <p>Account</p>
+  </a>
+
+  <a href="login.html" class="footer-item">
+    <i class="fa-solid fa-right-to-bracket"></i>
+    <p>Login</p>
+  </a>
+
+  <a href="index.html" class="footer-item">
+    <i class="fa-solid fa-house"></i>
+    <p>Home</p>
+  </a>
+
+  <a href="logout.html" class="footer-item">
+    <i class="fa-solid fa-right-from-bracket"></i>
+    <p>Logout</p>
+  </a>
+</footer>
+
+<script>
+  function showCartMessage() {
+    alert("Demo mode: Add to Cart is disabled for this static UX test.");
+  }
+</script>
+
+</body>
+</html>
