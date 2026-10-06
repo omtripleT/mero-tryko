@@ -1,264 +1,1695 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mero Tryko</title>
 
-    <!-- SEO Primary -->
-    <title>Mero Tryko | Fresh Local Snacks Online in Nepal</title>
-    <meta name="description" content="Mero Tryko offers fresh local snacks like Khajuri, Potato Chips, Fryums, Maluwa, Dalmot, Til Ladu and more at affordable prices in Nepal. Order online today!">
-    <meta name="keywords" content="Mero Tryko, Nepal snacks, Khajuri, Potato Chips, Fryums, Maluwa, Dalmot, Til Ladu, buy snacks online Nepal">
-    <meta name="author" content="Mero Tryko">
-    <meta name="robots" content="index, follow">
+  <!-- icons -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-    <!-- Open Graph (Social Sharing) -->
-    <meta property="og:title" content="Mero Tryko - Fresh Snacks Online">
-    <meta property="og:description" content="Buy your favorite local snacks at best prices in Nepal.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://merotryko.me/">
-    <meta property="og:image" content="https://merotryko.me/image/thekuwa.png">
+  <style>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="image/favicon.png">
-    <link rel="canonical" href="https://merotryko.me/">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    :root{
+      --red:#D62828;
+      --gold:#F4B400;
+      --cream:#FFF8E7;
+      --orange:#FF7A18;
+      --green:#3A7D44;
+      --dark:#1c1c1c;
+      --blue:rgb(21, 176, 238);
+    }
 
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Mero Tryko",
-  "url": "https://merotryko.me/",
-  "logo": "https://merotryko.me/image/favicon.png"
-}
-</script>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-    
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--cream);
+      color:#222;
+    }
+
+
+    /* ================= NAVBAR ================= */
+
+    .navbar{
+      width:100%;
+
+      background:linear-gradient(
+        180deg,
+        #EFFF9A 0%,
+        #D8FF4F 30%,
+        #A8F21B 65%,
+        #65C91A 100%
+      );
+
+      padding:2px 12px 4px 16px;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      position:sticky;
+      top:0;
+
+      z-index:1000;
+
+      box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    }
+
+
+    .logo{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:2px;
+    }
+
+
+    .logo img{
+      width:88px;
+      height:64px;
+      border-radius:10px;
+      object-fit:cover;
+    }
+
+
+    .logo-name{
+      font-size:0.5rem;
+      font-weight:600;
+      color:var(--green);
+    }
+
+
+    .logo-name span{
+      color:var(--orange);
+      font-weight:800;
+    }
+
+
+    .hamburger{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+      cursor:pointer;
+    }
+
+
+    .hamburger span{
+      width:25px;
+      height:3px;
+
+      background:linear-gradient(
+        to bottom right,
+        #FFD54F,
+        #FF9800,
+        #FF3D00,
+        #D50000
+      );
+
+      border-radius:10px;
+      transition:0.3s;
+    }
+
+
+    .nav-menu{
+      position:fixed;
+
+      top:70px;
+      right:-100%;
+
+      width:160px;
+
+      list-style:none;
+
+      padding:20px;
+
+      border-radius:20px 0 0 20px;
+
+      transition:0.4s;
+
+      box-shadow:-5px 0 20px rgba(0,0,0,0.1);
+
+      text-transform:capitalize;
+
+      background:linear-gradient(
+        180deg,
+        #EFFF9A 0%,
+        #D8FF4F 30%,
+        #A8F21B 65%,
+        #65C91A 100%
+      );
+    }
+
+
+    .nav-menu.active{
+      right:0;
+    }
+
+
+    .nav-menu li{
+      margin:20px 0;
+    }
+
+
+    .nav-menu a{
+      text-decoration:none;
+      color:black;
+      font-weight:bold;
+      position:relative;
+      transition:0.3s;
+    }
+
+
+    .nav-menu a::after{
+      content:"";
+
+      position:absolute;
+
+      left:0;
+      bottom:-5px;
+
+      width:0%;
+      height:3px;
+
+      background:var(--orange);
+
+      border-radius:10px;
+
+      transition:0.4s;
+    }
+
+
+    .nav-menu a:hover::after{
+      width:100%;
+    }
+
+
+    .nav-menu a:hover{
+      color:var(--red);
+    }
+
+
+    .hamburger.open span:nth-child(1){
+      transform:translateY(8px) rotate(45deg);
+    }
+
+
+    .hamburger.open span:nth-child(2){
+      opacity:0;
+    }
+
+
+    .hamburger.open span:nth-child(3){
+      transform:translateY(-8px) rotate(-45deg);
+    }
+
+
+    /* ================= DESKTOP NAV ================= */
+
+    @media(min-width:768px){
+
+      .navbar{
+        padding:18px 60px;
+      }
+
+      .hamburger{
+        display:none;
+      }
+
+      .nav-menu{
+        position:static;
+
+        width:auto;
+
+        background:none;
+
+        display:flex;
+
+        flex-direction:row;
+
+        align-items:center;
+
+        gap:35px;
+
+        padding:0;
+
+        box-shadow:none;
+
+        right:0;
+
+        border-radius:0;
+      }
+
+      .nav-menu li{
+        margin:0;
+      }
+
+    }
+
+
+    /* ================= HERO ================= */
+
+    .hero-slider{
+      position:relative;
+
+      width:100%;
+      height:300px;
+
+      overflow:hidden;
+
+      margin-top:1.6px;
+    }
+
+
+    .slide{
+      position:absolute;
+
+      width:100%;
+      height:100%;
+
+      opacity:0;
+
+      transition:0.7s;
+    }
+
+
+    .slide.active{
+      opacity:1;
+    }
+
+
+    .slide img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+
+    @media(min-width:768px){
+
+      .hero-slider{
+        height:400px;
+      }
+
+    }
+
+
+    /* ================= OVERLAY ================= */
+
+    .overlay{
+      position:absolute;
+
+      width:100%;
+      height:100%;
+
+      background:rgba(0,0,0,0.45);
+
+      z-index:10;
+
+      display:flex;
+
+      flex-direction:column;
+
+      justify-content:center;
+
+      align-items:center;
+
+      color:white;
+
+      text-align:center;
+
+      padding:20px;
+    }
+
+
+    .overlay h1{
+      font-size:32px;
+      margin-bottom:10px;
+    }
+
+
+    .overlay p{
+      margin-bottom:18px;
+    }
+
+
+    .overlay button{
+      background:var(--orange);
+
+      color:white;
+
+      border:none;
+
+      padding:12px 25px;
+
+      border-radius:30px;
+
+      font-size:16px;
+
+      font-weight:bold;
+    }
+
+
+    /* ================= SECTION TITLE ================= */
+
+    .section-title{
+      padding:20px 15px 10px;
+    }
+
+
+    .section-title h2{
+      font-size:22px;
+      text-align:center;
+    }
+
+
+    /* ================= CATEGORY ================= */
+
+    .category-scroll{
+      display:flex;
+
+      overflow-x:auto;
+
+      gap:15px;
+
+      padding:10px 15px 20px;
+    }
+
+
+    .category-scroll::-webkit-scrollbar{
+      display:none;
+    }
+
+
+    .category-card{
+      min-width:90px;
+
+      background:white;
+
+      padding:15px;
+
+      border-radius:20px;
+
+      text-align:center;
+
+      box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+      border:2px solid transparent;
+
+      background-clip:padding-box;
+
+      background-image:
+        linear-gradient(white, white),
+        linear-gradient(
+          to bottom right,
+          #FFD54F,
+          #FF9800,
+          #FF3D00,
+          #D50000
+        );
+
+      background-origin:border-box;
+
+      background-clip:padding-box,border-box;
+
+      transition:box-shadow 0.3s, transform 0.3s;
+    }
+
+
+    .category-card i{
+      font-size:28px;
+
+      color:var(--orange);
+
+      margin-bottom:10px;
+    }
+
+
+    /* ================= MENU ================= */
+
+    .menu-section{
+      padding:10px 15px;
+
+      display:grid;
+
+      grid-template-columns:repeat(2,1fr);
+
+      gap:12px;
+    }
+
+
+    .section-title{
+      grid-column:1 / -1;
+    }
+
+
+    .menu-card{
+      background:white;
+
+      border-radius:16px;
+
+      overflow:hidden;
+
+      box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+      display:flex;
+
+      flex-direction:column;
+
+      min-height:140px;
+
+      border:2px solid transparent;
+
+      background-clip:padding-box;
+
+      background-image:
+        linear-gradient(white,white),
+        linear-gradient(
+          to bottom right,
+          #FFD54F,
+          #FF9800,
+          #FF3D00,
+          #D50000
+        );
+
+      background-origin:border-box;
+
+      background-clip:padding-box,border-box;
+
+      transition:box-shadow 0.3s, transform 0.3s;
+    }
+
+
+    .menu-image{
+      width:100%;
+
+      aspect-ratio:1 / 1;
+
+      overflow:hidden;
+    }
+
+
+    .menu-image img{
+      width:100%;
+      height:100%;
+
+      object-fit:cover;
+
+      display:block;
+    }
+
+
+    .menu-content{
+      flex:1;
+
+      padding:14px;
+
+      display:flex;
+
+      flex-direction:column;
+
+      justify-content:center;
+
+      gap:6px;
+
+      text-transform:capitalize;
+    }
+
+
+    .menu-content h3{
+      font-size:16px;
+      margin:0;
+    }
+
+
+    .price-box{
+      display:flex;
+
+      gap:8px;
+
+      align-items:center;
+    }
+
+
+    .new-price{
+      color:var(--green);
+      font-weight:bold;
+    }
+
+
+    .old-price{
+      text-decoration:line-through;
+
+      color:gray;
+
+      font-size:13px;
+    }
+
+
+    .menu-content p{
+      font-size:13px;
+
+      margin:0;
+
+      color:#555;
+    }
+
+
+    .menu-content button{
+      background:var(--green);
+
+      color:white;
+
+      border:none;
+
+      padding:8px;
+
+      width:100%;
+
+      border-radius:10px;
+    }
+
+
+    /* ================= DESKTOP MENU ================= */
+
+    @media(min-width:768px){
+
+      .menu-section{
+        grid-template-columns:repeat(4,1fr);
+
+        gap:20px;
+      }
+
+
+      .menu-image{
+        width:100%;
+
+        aspect-ratio:4 / 3;
+      }
+
+
+      .menu-image img{
+        object-fit:cover;
+      }
+
+
+      .menu-content{
+        align-items:center;
+      }
+
+
+      .menu-content button{
+        width:100%;
+      }
+
+    }
+
+
+    /* ================= REVIEWS ================= */
+
+    .review-scroll{
+      display:flex;
+
+      overflow-x:auto;
+
+      gap:15px;
+
+      padding:15px;
+    }
+
+
+    .review-scroll::-webkit-scrollbar{
+      display:none;
+    }
+
+
+    .review-card{
+      min-width:220px;
+
+      background:white;
+
+      padding:18px;
+
+      border-radius:20px;
+
+      text-align:center;
+
+      box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+      border:2px solid transparent;
+
+      background-clip:padding-box;
+
+      background-image:
+        linear-gradient(white,white),
+        linear-gradient(
+          to bottom right,
+          #FFD54F,
+          #FF9800,
+          #FF3D00,
+          #D50000
+        );
+
+      background-origin:border-box;
+
+      background-clip:padding-box,border-box;
+
+      transition:box-shadow 0.3s, transform 0.3s;
+    }
+
+
+    .review-card:hover{
+      box-shadow:0 8px 24px rgba(3,178,247,0.18);
+
+      transform:translateY(-3px);
+    }
+
+
+    .review-card img{
+      width:80px;
+
+      height:80px;
+
+      border-radius:50%;
+
+      object-fit:cover;
+
+      margin-bottom:10px;
+
+      border:3px solid transparent;
+    }
+
+
+    .review-card h4{
+      color:var(--dark);
+
+      font-size:16px;
+
+      font-weight:700;
+
+      text-transform:capitalize;
+
+      margin-bottom:4px;
+    }
+
+
+    .stars{
+      color:var(--gold);
+
+      margin:8px 0;
+    }
+
+
+    .review-card p{
+      font-size:12px;
+
+      text-transform:capitalize;
+
+      color:#555;
+
+      line-height:1.5;
+    }
+
+
+    /* ================= FOOTER ================= */
+
+    .footer{
+      background:linear-gradient(
+        to bottom right,
+        #FFD54F,
+        #FF9800,
+        #FF3D00,
+        #D50000
+      );
+
+      padding:32px 20px;
+
+      text-align:center;
+
+      margin-top:50px;
+
+      border-top-left-radius:30px;
+
+      border-top-right-radius:30px;
+    }
+
+
+    .footer h3{
+      color:var(--cream);
+
+      margin-bottom:16px;
+    }
+
+
+    .social-icons{
+      display:flex;
+
+      justify-content:center;
+
+      gap:18px;
+
+      margin-bottom:20px;
+    }
+
+
+    .social-icons a{
+      width:48px;
+
+      height:48px;
+
+      background:#FFF8E7;
+
+      color:#D62828;
+
+      border-radius:50%;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      text-decoration:none;
+
+      font-size:20px;
+
+      transition:0.3s ease;
+    }
+
+
+    .social-icons a:hover{
+      background:#F4B400;
+
+      transform:translateY(-6px) scale(1.05);
+    }
+
+
+    .copyright{
+      color:#FFF8E7;
+
+      margin-bottom:8px;
+
+      font-size:14px;
+    }
+
+
+    .designer{
+      color:#ffe9a8;
+
+      font-size:14px;
+    }
+
+
+    .designer span{
+      color:white;
+
+      font-weight:bold;
+
+      letter-spacing:1px;
+    }
+
+
+    /* ================= FOOTER NAV ================= */
+
+    .footer-nav{
+      position:fixed;
+
+      bottom:0;
+
+      width:100%;
+
+      background:white;
+
+      display:flex;
+
+      justify-content:space-around;
+
+      padding:12px 0;
+
+      border-radius:25px 25px 0 0;
+
+      box-shadow:0 -3px 15px rgba(0,0,0,0.1);
+
+      border-top:2.5px solid rgb(21,176,238);
+
+      transition:0.4s ease;
+    }
+
+
+    .footer-nav a{
+      text-decoration:none;
+
+      display:flex;
+
+      flex-direction:column;
+
+      align-items:center;
+
+      font-size:12px;
+
+      transition:0.3s;
+    }
+
+
+    .footer-nav a i{
+      font-size:22px;
+
+      margin-bottom:4px;
+
+      background:linear-gradient(
+        to bottom right,
+        #FFD54F,
+        #FF9800,
+        #FF3D00,
+        #D50000
+      );
+
+      -webkit-background-clip:text;
+
+      -webkit-text-fill-color:transparent;
+
+      background-clip:text;
+    }
+
+
+    .footer-nav p{
+      color:black;
+    }
+
+
+    .footer-item{
+      text-align:center;
+
+      color:var(--green);
+    }
+
+
+    .footer-item i{
+      font-size:22px;
+
+      margin-bottom:5px;
+    }
+
+
+    .active-footer{
+      color:var(--orange);
+    }
+
+
+    .footer-nav.hide{
+      transform:translateY(120%);
+    }
+
+
+    @media(min-width:768px){
+
+      .footer-nav{
+        display:none;
+      }
+
+    }
+
+  </style>
 </head>
+
 
 <body>
 
-    <!-- Header Section -->
-    <header class="header">
-        <h1 class="logo"><span style="color: black;">Mero</span> Tryko</h1>
-        <nav class="nav">
-            <a href="about.html">About Us</a>
-            <a href="about.html">Contacts</a>
-            <a href="product.html">Products Info</a>
-        </nav>
-        <button id="cart-btn" onclick="goToCart()" class="cart">
-            <i class="fa-solid fa-cart-shopping"></i>(0)
-        </button>
-    </header>
-    </header>
 
-    <section class="intro">
-    <div class="intro-content">
-        <h2>Fresh Traditional Snacks in Nepal</h2>
-        <p>
-            Mero Tryko is a Nepal-based snack brand offering fresh traditional snacks like Khajuri, Dalmot, Til Ladu, Maluwa and more. We provide affordable, high-quality local snacks delivered across Nepal.
-        </p>
+  <!-- ================= NAVBAR ================= -->
+
+  <nav class="navbar">
+
+    <div class="logo">
+
+      <img src="merotryko2.jpeg" alt="Mero Tryko">
+
+      <h5 class="logo-name">
+        <span>I Like It...</span>
+      </h5>
+
     </div>
-</section>
 
 
-<!-- Products Section -->
-<section class="products-section">
+    <div class="hamburger" id="hamburger">
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </div>
 
 
-    <!-- Products Section -->
-    <section class="products-section">
-        <h2>Our Hero Products</h2>
-        <div class="products-grid">
+    <ul class="nav-menu" id="navMenu">
 
-            <div class="card">
-                <img src="image/thekuwa.png" alt="Khajuri sweet snack pack">
-                <h4>Khajuri</h4>
-                <div class="price">
-                    <span class="span1">Rs.110</span>
-                    <span class="span2">10% Off</span>
-                </div>
-                <h5>Rs 99 Only</h5>
-                <p>Packet Size: 8 Pieces(140-150g)</p>
-                <button class="buy-btn" data-name="Khajuri(8pieces)" data-price="99">Add to Cart</button>
-            </div>
+      <li>
+        <a href="about.html">About</a>
+      </li>
 
-            <div class="card">
-                <img src="image/chips.png" alt="Crispy potato chips packet">
-                <h4>Potato Chips</h4>
-                <div class="price">
-                    <span class="span1">Rs.60</span>
-                    <span class="span2">20% Off</span>
-                </div>
-                <h5>Rs 49 Only</h5>
-                <p>Packet Size: 50g</p>
-                <button class="buy-btn" data-name="Potato Chips(50g)" data-price="49">Add to Cart</button>
-            </div>
+      <li>
+        <a href="shop.html">Shop</a>
+      </li>
 
-            <div class="card">
-                <img src="image/fryumps.png" alt="Fryums snack packet">
-                <h4>Fryums</h4>
-                <div class="price">
-                    <span class="span1">Rs.60</span>
-                    <span class="span2">20% Off</span>
-                </div>
-                <h5>Rs 49 Only</h5>
-                <p>Packet Size: 70g</p>
-                <button class="buy-btn" data-name="Fryums(70g)" data-price="49">Add to Cart</button>
-            </div>
+      <li>
+        <a href="login.html">Login</a>
+      </li>
 
-            <div class="card">
-                <img src="image/maluwa.png" alt="Maluwa traditional sweet snack">
-                <h4>Maluwa</h4>
-                <div class="price">
-                    <span class="span1">Rs.110</span>
-                    <span class="span2">10% Off</span>
-                </div>
-                <h5>Rs 99 Only</h5>
-                <p>Packet Size: 8 Pieces(140-150)</p>
-                <button class="buy-btn" data-name="Maluwa(8piece)" data-price="99">Add to Cart</button>
-            </div>
+      <li>
+        <a href="register.html">Register</a>
+      </li>
 
-            <div class="card">
-                <img src="image/dalmot.png" alt="Dalmot spicy snack pack">
-                <h4>Dalmot</h4>
-                <div class="price">
-                    <span class="span1">Rs.60</span>
-                    <span class="span2">20% Off</span>
-                </div>
-                <h5>Rs 49 Only</h5>
-                <p>Packet Size: 70g</p>
-                <button class="buy-btn" data-name="Dalmot(70g)" data-price="49">Add to Cart</button>
-            </div>
+      <li>
+        <a href="logout">Logout</a>
+      </li>
 
-            <div class="card">
-                <img src="image/tilladu.png" alt="Til Ladu sesame sweet balls">
-                <h4>Til Ladu</h4>
-                <div class="price">
-                    <span class="span1">Rs.89</span>
-                    <span class="span2">10% Off</span>
-                </div>
-                <h5>Rs 79 Only</h5>
-                <p>Packet Size: 12 Pieces(120-130g)</p>
-                <button class="buy-btn" data-name="Til Ladu(12pieces)" data-price="79">Add to Cart</button>
-            </div>
-            <div class="card">
-                <img src="image/namkeen.png" alt="Til Ladu sesame sweet balls">
-                <h4>Namkeen</h4>
-                <div class="price">
-                    <span class="span1">Rs.99</span>
-                    <span class="span2">20% Off</span>
-                </div>
-                <h5>Rs 79 Only</h5>
-                <p>Packet Size: 100gram</p>
-                <button class="buy-btn" data-name="Namkeen(100g)" data-price="79">Add to Cart</button>
-            </div>
+      <li>
+        <a href="employee.html">Employee</a>
+      </li>
+
+      <li>
+        <a href="admin.html">Admin</a>
+      </li>
+
+      <li>
+        <a href="#account">
+          <i class="fas fa-user"></i>
+          Account
+        </a>
+      </li>
+
+    </ul>
+
+  </nav>
+
+
+
+  <!-- ================= HERO SLIDER ================= -->
+
+  <section class="hero-slider">
+
+
+    <div class="slide active">
+
+      <img src="merotryko2.jpeg" alt="Mero Tryko">
+
+    </div>
+
+
+    <div class="slide">
+
+      <img src="merotryko2.jpeg" alt="Mero Tryko">
+
+    </div>
+
+
+    <div class="slide">
+
+      <img src="merotryko2.jpeg" alt="Mero Tryko">
+
+    </div>
+
+
+    <!-- Keeping your original overlay disabled -->
+
+    <!--
+    <div class="overlay">
+
+      <h1>
+        Spicy Chatpate & Crispy Panipuri
+      </h1>
+
+      <p>
+        Fresh • Hygienic • Delicious
+      </p>
+
+      <button>
+        Order Now
+      </button>
+
+    </div>
+    -->
+
+
+  </section>
+
+
+
+  <!-- ================= CATEGORIES ================= -->
+
+  <section class="categories">
+
+    <div class="section-title">
+
+      <h2>
+        What's on your mind?
+      </h2>
+
+    </div>
+
+
+    <div class="category-scroll">
+
+
+      <div class="category-card">
+
+        <i class="fa-solid fa-bowl-food"></i>
+
+        <p>Panipuri</p>
+
+      </div>
+
+
+      <div class="category-card">
+
+        <i class="fa-solid fa-pepper-hot"></i>
+
+        <p>Chatpate</p>
+
+      </div>
+
+
+      <div class="category-card">
+
+        <i class="fa-solid fa-cookie-bite"></i>
+
+        <p>Dahipuri</p>
+
+      </div>
+
+
+      <div class="category-card">
+
+        <i class="fa-solid fa-glass-water"></i>
+
+        <p>Juice</p>
+
+      </div>
+
+
+      <div class="category-card">
+
+        <i class="fa-solid fa-utensils"></i>
+
+        <p>Snacks</p>
+
+      </div>
+
+
+      <div class="category-card">
+
+        <i class="fa-solid fa-star"></i>
+
+        <p>Special</p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ================= PRODUCTS ================= -->
+
+  <section class="menu-section">
+
+    <div class="section-title">
+
+      <h2>
+        Popular Items
+      </h2>
+
+    </div>
+
+
+    <!-- PRODUCT 1 -->
+
+    <div class="menu-card">
+
+      <div class="menu-image">
+
+        <img src="merotryko2.jpeg" alt="Panipuri">
+
+      </div>
+
+
+      <div class="menu-content">
+
+        <h3>Panipuri</h3>
+
+        <div class="price-box">
+
+          <span class="new-price">
+            Rs 80
+          </span>
 
         </div>
 
-        <div style="text-align:center; margin:20px;">
-            <button class="placeorder" onclick="goToCart()">Place Order</button>
-        </div>
-    </section>
+        <p>
+          Fresh and tasty Terai-style panipuri.
+        </p>
 
-    <!-- Featured Section -->
-    <section class="featured-section">
-        <h2>Featured Products</h2>
+      </div>
 
-        <div class="featured-grid">
+    </div>
 
-            <div class="featured-card">
-                <img src="image/mango.png" alt="Mango pickle jar">
-                <h4>Mango Pickle</h4>
-            </div>
 
-            <div class="featured-card">
-                <img src="image/lemon.png" alt="Lemon pickle jar">
-                <h4>Lemon Pickle</h4>
-            </div>
 
-            <div class="featured-card">
-                <img src="image/laljamun.png" alt="Lal Jamun sweet dessert">
-                <h4>Lal Jamun</h4>
-            </div>
+    <!-- PRODUCT 2 -->
 
-            <div class="featured-card">
-                <img src="image/whitejamun.png" alt="White Jamun sweet dessert">
-                <h4>White Jamun</h4>
-            </div>
+    <div class="menu-card">
 
-        </div>
+      <div class="menu-image">
 
-        <div class="more">
-            <a href="product.html">Explore More</a>
-        </div>
-    </section>
+        <img src="merotryko2.jpeg" alt="Chatpate">
 
-    <!-- Message Section -->
-<section class="message-section">
-    <h2>leave your feedback</h2>
+      </div>
 
-    <form id="message-form"
-          action="https://docs.google.com/forms/d/e/1FAIpQLSeatxVXm2sGsDoP-dOCoOnzwsnyzpdLpuTvKn48i7MokJRl7Q/formResponse"
-          method="POST"
-          target="hidden_iframe">
 
-        <input type="text"
-               name="entry.829618461"
-               placeholder="Your Nick Name"
-               required>
+      <div class="menu-content">
 
-        <textarea name="entry.1143043689"
-                  placeholder="Write your message..."
-                  required></textarea>
+        <h3>Chatpate</h3>
 
-        <!-- Star Rating -->
-        <div class="rating">
-            <span data-value="1">★</span>
-            <span data-value="2">★</span>
-            <span data-value="3">★</span>
-            <span data-value="4">★</span>
-            <span data-value="5">★</span>
+        <div class="price-box">
+
+          <span class="new-price">
+            Rs 100
+          </span>
+
         </div>
 
-        <input type="hidden"
-               name="entry.553279323"
-               id="rating-value"
-               required>
+        <p>
+          Spicy, fresh and crunchy chatpate.
+        </p>
 
-        <button type="submit" class="send-btn">Send Message</button>
+      </div>
 
-    </form>
+    </div>
 
-    <iframe name="hidden_iframe" style="display:none;"></iframe>
 
-    <p id="success-message" style="display:none; color:#3A7D44; margin-top:10px;">
-        🎉🎉🎉Thank you for your feedback!🎉🎉🎉
+
+    <!-- PRODUCT 3 -->
+
+    <div class="menu-card">
+
+      <div class="menu-image">
+
+        <img src="merotryko2.jpeg" alt="Dahi Puri">
+
+      </div>
+
+
+      <div class="menu-content">
+
+        <h3>Dahi Puri</h3>
+
+        <div class="price-box">
+
+          <span class="new-price">
+            Rs 120
+          </span>
+
+        </div>
+
+        <p>
+          Crispy puri with fresh creamy dahi.
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- PRODUCT 4 -->
+
+    <div class="menu-card">
+
+      <div class="menu-image">
+
+        <img src="merotryko2.jpeg" alt="Special Puri">
+
+      </div>
+
+
+      <div class="menu-content">
+
+        <h3>Special Puri</h3>
+
+        <div class="price-box">
+
+          <span class="new-price">
+            Rs 120
+          </span>
+
+        </div>
+
+        <p>
+          Our special signature panipuri.
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- PRODUCT 5 -->
+
+    <div class="menu-card">
+
+      <div class="menu-image">
+
+        <img src="merotryko2.jpeg" alt="Masala Chatpate">
+
+      </div>
+
+
+      <div class="menu-content">
+
+        <h3>Masala Chatpate</h3>
+
+        <div class="price-box">
+
+          <span class="new-price">
+            Rs 110
+          </span>
+
+        </div>
+
+        <p>
+          Extra spicy masala chatpate.
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- PRODUCT 6 -->
+
+    <div class="menu-card">
+
+      <div class="menu-image">
+
+        <img src="merotryko2.jpeg" alt="Mero Tryko Special">
+
+      </div>
+
+
+      <div class="menu-content">
+
+        <h3>Mero Tryko Special</h3>
+
+        <div class="price-box">
+
+          <span class="new-price">
+            Rs 150
+          </span>
+
+        </div>
+
+        <p>
+          Our special combination for food lovers.
+        </p>
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- ================= REVIEWS ================= -->
+
+  <section class="reviews">
+
+    <div class="section-title">
+
+      <h2>
+        Customer Reviews
+      </h2>
+
+    </div>
+
+
+    <div class="review-scroll">
+
+
+      <!-- REVIEW 1 -->
+
+      <div class="review-card">
+
+        <img src="merotryko2.jpeg" alt="user">
+
+        <h4>Customer One</h4>
+
+        <p>
+          Very tasty and fresh panipuri.
+        </p>
+
+        <div class="stars">
+          ★★★★★
+        </div>
+
+      </div>
+
+
+
+      <!-- REVIEW 2 -->
+
+      <div class="review-card">
+
+        <img src="merotryko2.jpeg" alt="user">
+
+        <h4>Customer Two</h4>
+
+        <p>
+          The chatpate was really delicious.
+        </p>
+
+        <div class="stars">
+          ★★★★★
+        </div>
+
+      </div>
+
+
+
+      <!-- REVIEW 3 -->
+
+      <div class="review-card">
+
+        <img src="merotryko2.jpeg" alt="user">
+
+        <h4>Customer Three</h4>
+
+        <p>
+          Loved the taste and presentation.
+        </p>
+
+        <div class="stars">
+          ★★★★★
+        </div>
+
+      </div>
+
+
+
+      <!-- REVIEW 4 -->
+
+      <div class="review-card">
+
+        <img src="merotryko2.jpeg" alt="user">
+
+        <h4>Customer Four</h4>
+
+        <p>
+          Very clean and hygienic place.
+        </p>
+
+        <div class="stars">
+          ★★★★☆
+        </div>
+
+      </div>
+
+
+
+      <!-- REVIEW 5 -->
+
+      <div class="review-card">
+
+        <img src="merotryko2.jpeg" alt="user">
+
+        <h4>Customer Five</h4>
+
+        <p>
+          One of my favorite panipuri places.
+        </p>
+
+        <div class="stars">
+          ★★★★★
+        </div>
+
+      </div>
+
+
+
+      <!-- REVIEW 6 -->
+
+      <div class="review-card">
+
+        <img src="merotryko2.jpeg" alt="user">
+
+        <h4>Customer Six</h4>
+
+        <p>
+          Amazing taste and great experience.
+        </p>
+
+        <div class="stars">
+          ★★★★★
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="footer">
+
+    <h3>
+      Let's connect With Us
+    </h3>
+
+
+    <div class="social-icons">
+
+
+      <a href="#">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+
+
+      <a href="#">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+
+
+      <a href="#">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+
+
+      <a href="#">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+
+
+      <a href="#">
+        <i class="fa-brands fa-envelope"></i>
+      </a>
+
+
+    </div>
+
+
+    <p class="copyright">
+      © 2026 Mero Tryko. All Rights Reserved
     </p>
-</section>
 
 
-    <!-- Footer -->
-    <footer class="footer">
-        <h3><span style="color: black;">Mero</span> Tryko</h3>
-        <div class="link">
-            <a href="https://call.whatsapp.com/video/UnmIADa2hhuK3L3g6UI3wh"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="mailto:omtriplet3@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-        </div>
-        <p>© 2026 All Rights Reserved - Mero Tryko</p>
-    </footer>
+    <p class="designer">
+      Designed By
+      <span>HUMBLE HUNTER</span>
+    </p>
 
-    <script src="script.js"></script>
+
+  </footer>
+
+
+
+  <!-- ================= FOOTER NAV ================= -->
+
+  <footer class="footer-nav">
+
+
+    <a href="#account" class="footer-item active-footer">
+
+      <i class="fa-solid fa-user"></i>
+
+      <p>
+        Account
+      </p>
+
+    </a>
+
+
+    <a href="#login" class="footer-item">
+
+      <i class="fa-solid fa-right-to-bracket"></i>
+
+      <p>
+        Login
+      </p>
+
+    </a>
+
+
+    <a href="#register" class="footer-item">
+
+      <i class="fa-solid fa-user-plus"></i>
+
+      <p>
+        Register
+      </p>
+
+    </a>
+
+
+    <a href="#logout" class="footer-item">
+
+      <i class="fa-solid fa-right-from-bracket"></i>
+
+      <p>
+        Logout
+      </p>
+
+    </a>
+
+
+  </footer>
+
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    /* ================= HAMBURGER ================= */
+
+    const hamburger =
+      document.getElementById("hamburger");
+
+    const navMenu =
+      document.getElementById("navMenu");
+
+
+    hamburger.addEventListener("click", function(){
+
+      hamburger.classList.toggle("open");
+
+      navMenu.classList.toggle("active");
+
+    });
+
+
+
+    /* ================= CLOSE MENU ================= */
+
+    document.querySelectorAll(".nav-menu a").forEach(function(link){
+
+      link.addEventListener("click", function(){
+
+        hamburger.classList.remove("open");
+
+        navMenu.classList.remove("active");
+
+      });
+
+    });
+
+
+
+    /* ================= HERO SLIDER ================= */
+
+    const slides =
+      document.querySelectorAll(".slide");
+
+    let currentSlide = 0;
+
+
+    function showSlide(index){
+
+      slides.forEach(function(slide){
+
+        slide.classList.remove("active");
+
+      });
+
+      slides[index].classList.add("active");
+
+    }
+
+
+    setInterval(function(){
+
+      currentSlide++;
+
+      if(currentSlide >= slides.length){
+
+        currentSlide = 0;
+
+      }
+
+      showSlide(currentSlide);
+
+    },3000);
+
+
+
+    /* ================= MOBILE FOOTER HIDE ================= */
+
+    const footerNav =
+      document.querySelector(".footer-nav");
+
+    let lastScrollTop = 0;
+
+
+    window.addEventListener("scroll", function(){
+
+      let currentScroll =
+        window.pageYOffset ||
+        document.documentElement.scrollTop;
+
+
+      if(currentScroll > lastScrollTop &&
+         currentScroll > 100){
+
+        footerNav.classList.add("hide");
+
+      }else{
+
+        footerNav.classList.remove("hide");
+
+      }
+
+
+      lastScrollTop =
+        currentScroll <= 0 ? 0 : currentScroll;
+
+    });
+
+  </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
+```
