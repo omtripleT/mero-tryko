@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile – Mero Tryko</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --red:    #D62828;
+  --cream:  #FFF8E7;
+  --orange: #FF7A18;
+  --green:  #3A7D44;
+  --dark:   #1A1A1A;
+
+  --green-light: #EBF5EC;
+  --green-mid:   #2e6338;
+
+  --radius-sm:  10px;
+  --radius-md:  18px;
+  --radius-lg:  28px;
+
+  --shadow-soft: 0 8px 32px rgba(58,125,68,0.10), 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-card: 0 24px 64px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.06);
+
+  --font-head: 'Sora', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 20px 60px;
+  font-family: var(--font-body);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 10% 0%, rgba(58,125,68,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 35% at 90% 100%, rgba(255,122,24,0.07) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+.blob-1 {
+  width: 320px; height: 320px;
+  background: var(--green);
+  top: -80px; left: -100px;
+  animation: drift 10s ease-in-out infinite alternate;
+}
+.blob-2 {
+  width: 240px; height: 240px;
+  background: var(--orange);
+  bottom: 60px; right: -80px;
+  animation: drift 13s ease-in-out infinite alternate-reverse;
+}
+@keyframes drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(30px, 20px) scale(1.08); }
+}
+
+.page-header, .account, .overlay { position: relative; z-index: 1; }
+
+/* TOAST */
+.toast {
+  position: fixed;
+  top: 24px; right: 24px;
+  padding: 14px 22px;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 14px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  animation: toastIn 0.4s cubic-bezier(.3,1.4,.5,1) both, toastOut 0.4s ease 3.2s forwards;
+}
+.toast.success { background: linear-gradient(135deg, var(--green), #27ae60); }
+.toast.error   { background: linear-gradient(135deg, var(--red), #c0392b); }
+@keyframes toastIn  { from { opacity:0; transform:translateX(70px) scale(.9); } to { opacity:1; transform:none; } }
+@keyframes toastOut { from { opacity:1; } to { opacity:0; pointer-events:none; } }
+
+/* PAGE HEADER */
+
+.page-header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  padding:12px 18px;
+  background: linear-gradient(
+  180deg,
+  #EFFF9A 0%,
+  #D8FF4F 30%,
+  #A8F21B 65%,
+  #65C91A 100%
+);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,0.05);
+  animation:fadeUp .5s ease both;
+  /* margin-bottom:32px; */
+}
+
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.nav-left{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.nav-left img{
+  width: 88px;
+  height: 64px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.nav-left h5{
+  font-size:8px;
+  margin-top:4px;
+  color:var(--green);
+  font-weight:600;
+  text-transform:capitalize;
+  white-space:nowrap;
+}
+
+.nav-center{
+  text-align:center;
+  flex:1;
+}
+
+.nav-center h3{
+  font-family:var(--font-head);
+  font-size:18px;
+  color:var(--dark);
+  font-weight:700;
+  margin-bottom:2px;
+}
+
+.nav-center p{
+  font-size:11px;
+  color:#888;
+  letter-spacing:.3px;
+}
+
+.nav-right a{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+    background: linear-gradient(
+    to bottom right,
+    #FFD54F,
+    #FF9800,
+    #FF3D00,
+    #D50000
+  );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  transition:.2s;
+}
+
+.nav-right a:hover{
+  transform:scale(1.08);
+  background:#dff1e2;
+}
+
+.nav-right i{
+  color:var(--green);
+  font-size:18px;
+}
+
+/* CARD */
+.account {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  animation: fadeUp .7s .1s ease both;
+  margin-top: 80px;
+}
+
+/* BANNER */
+.card-banner {
+  background: linear-gradient(160deg, var(--green) 0%, #27ae60 50%, #219150 100%);
+  padding: 40px 20px 72px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.card-banner::before {
+  content: '';
+  position: absolute;
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.12);
+  top: -80px; right: -60px;
+  pointer-events: none;
+}
+.card-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 100%; height: 44px;
+  background: white;
+  border-radius: 60% 60% 0 0 / 100% 100% 0 0;
+}
+
+.loyalty-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-bottom: 18px;
+}
+.loyalty-badge i { font-size: 11px; }
+
+/* AVATAR */
+.profile-wrap {
+  display: inline-block;
+  position: relative;
+}
+.profile {
+  width: 108px; height: 108px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+  display: block;
+}
+.online-dot {
+  width: 20px; height: 20px;
+  background: #2ecc71;
+  border: 3px solid white;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 5px; right: 5px;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(46,204,113,.5); }
+  50%      { box-shadow: 0 0 0 6px rgba(46,204,113,0); }
+}
+
+/* CARD BODY */
+.card-body {
+  padding: 24px 28px 32px;
+  text-align: center;
+}
+.user-name {
+  font-family: var(--font-head);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.4px;
+  margin-bottom: 4px;
+}
+.user-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--green);
+  background: var(--green-light);
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 26px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #eee 30%, #eee 70%, transparent);
+  margin-bottom: 24px;
+}
+
+/* STAT CARDS */
+.stats-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.stat-box {
+  flex: 1;
+  background: var(--cream);
+  border: 1.5px solid #f0e8d6;
+  padding: 18px 12px 14px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  transition: transform .2s, box-shadow .2s;
+}
+.stat-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(255,122,24,0.12);
+}
+.stat-icon {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: 1.5px solid #f0e8d6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(255,122,24,0.10);
+}
+.stat-icon i { font-size: 17px; color: var(--orange); }
+.stat-box h4 {
+  font-size: 10px;
+  font-weight: 500;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 5px;
+}
+.stat-box p {
+  font-family: var(--font-head);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 11px;
+  color: #bbb;
+  margin-top: 4px;
+}
+
+/* PROGRESS */
+.progress-wrap {
+  margin-bottom: 28px;
+  text-align: left;
+}
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.progress-meta span:first-child { color: var(--dark); font-weight: 600; }
+.progress-track {
+  height: 8px;
+  background: #f0ece4;
+  border-radius: 100px;
+  overflow: hidden;
+}
+  .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), #27ae60) !important;
+  border-radius: 100px;
+  width: 0%;
+  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+}
+
+.unlock-box{
+  margin-top:14px;
+  background:linear-gradient(135deg,#fff7da,#fff0b8);
+  border:1.5px solid #ffe08a;
+  color:#8a5a00;
+  padding:12px 14px;
+  border-radius:14px;
+  font-size:13px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  animation:fadeUp .5s ease;
+}
+
+.unlock-box i{
+  color:#f39c12;
+  font-size:18px;
+}
+/* BUTTONS */
+.btn-row { display: flex; gap: 12px; }
+.btn {
+  flex: 1;
+  padding: 14px 10px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform .18s, box-shadow .18s, background .18s;
+}
+.btn:active { transform: scale(.97); }
+.btn-green {
+  background: var(--green);
+  color: white;
+  box-shadow: 0 4px 16px rgba(58,125,68,0.25);
+}
+.btn-green:hover {
+  background: var(--green-mid);
+  box-shadow: 0 6px 22px rgba(58,125,68,0.35);
+  transform: translateY(-1px);
+}
+.btn-orange {
+  background: var(--cream);
+  color: var(--orange);
+  border: 1.5px solid #ffe0b2;
+}
+.btn-orange:hover {
+  background: #fff3e0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(255,122,24,0.15);
+}
+
+/* MODAL OVERLAY */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20,20,20,0.55);
+  backdrop-filter: blur(6px);
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.overlay.active { display: flex; }
+
+/* REVIEW BOX */
+.review-box {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.22);
+  animation: popIn .3s cubic-bezier(.3,1.4,.5,1) both;
+  position: relative;
+}
+.review-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--green), #27ae60, var(--orange));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+@keyframes popIn {
+  from { opacity:0; transform:scale(.92) translateY(16px); }
+  to   { opacity:1; transform:none; }
+}
+
+.review-icon {
+  width: 52px; height: 52px;
+  background: var(--green-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.review-icon i { color: var(--green); font-size: 22px; }
+
+.review-box h3 {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 4px;
+  letter-spacing: -0.3px;
+}
+.review-box .sub {
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 22px;
+}
+
+.review-box textarea {
+  width: 100%;
+  height: 108px;
+  padding: 14px 15px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid #eee;
+  resize: none;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--dark);
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  margin-bottom: 20px;
+  background: #fafafa;
+  line-height: 1.6;
+}
+.review-box textarea:focus {
+  border-color: var(--green);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(58,125,68,0.08);
+}
+.review-box textarea::placeholder { color: #ccc; }
+
+/* STARS */
+.star-label {
+  font-size: 12px;
+  color: #aaa;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.stars {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.stars span {
+  font-size: 36px;
+  cursor: pointer;
+  color: #e0ddd6;
+  transition: color .12s, transform .12s;
+  line-height: 1;
+  user-select: none;
+}
+.stars span.active { color: #f39c12; }
+.stars span:hover  { transform: scale(1.18); }
+
+/* MODAL BUTTONS */
+.modal-btns { display: flex; gap: 10px; }
+.submit-btn {
+  background: var(--green);
+  color: white;
+  box-shadow: 0 4px 14px rgba(58,125,68,0.28);
+}
+.submit-btn:hover { background: var(--green-mid); transform: translateY(-1px); }
+.close-btn  { background: rgb(233, 21, 21); color: #555; }
+.close-btn:hover { background: red; color: #555; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:none; }
+}
+
+@media (max-width: 460px) {
+  .card-body { padding: 20px 18px 24px; }
+  .review-box { padding: 26px 20px; }
+  body { padding: 32px 14px 48px; }
+}
+
+.points-details{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin-top:10px;
+}
+
+.point-item{
+  background:#fafafa;
+  border:1.5px solid #eee;
+  border-radius:14px;
+  padding:14px;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  font-size:14px;
+  line-height:1.5;
+  color:#555;
+}
+
+.point-item i{
+  color:var(--orange);
+  font-size:18px;
+  margin-top:2px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+
+<div id="demoToast" class="toast success" style="display:none;">
+  <i class="fas fa-circle-check"></i>
+  <span>Static demo mode</span>
+</div>
+
+<div class="page-header">
+  <div class="navbar">
+    <div class="nav-left">
+      <img src="merotryko2.jpeg" alt="logo">
+      <h5><span style="color: var(--orange);">I Like It...</span></h5>
+    </div>
+
+    <div class="nav-right">
+      <a href="index.html">
+        <i class="fas fa-home"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="account">
+
+  <div class="card-banner">
+    <div class="loyalty-badge">
+      <i class="fas fa-crown"></i> Loyalty Member
+    </div>
+
+    <div class="profile-wrap">
+      <img src="merotryko2.jpeg" class="profile" alt="Profile photo">
+      <div class="online-dot"></div>
+    </div>
+  </div>
+
+  <div class="card-body">
+
+    <h3 class="user-name">Om Prakash Kumar Sah</h3>
+
+    <div class="user-role">
+      <i class="fas fa-shield-halved" style="font-size:11px;"></i>
+      Verified Member
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="stats-row">
+
+      <div class="stat-box">
+        <div class="stat-icon"><i class="fas fa-star"></i></div>
+        <h4>Royalty Points</h4>
+        <p id="livePoints">65</p>
+        <div class="stat-label">points earned</div>
+      </div>
+
+      <div class="stat-box">
+        <div class="stat-icon"><i class="fas fa-fingerprint"></i></div>
+        <h4>Member ID</h4>
+        <p>1825</p>
+        <div class="stat-label">unique id</div>
+      </div>
+
+    </div>
+
+    <div class="progress-wrap">
+
+      <div class="progress-meta">
+        <span>65 points</span>
+        <span>Collect 0 more points</span>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="unlock-box">
+        <i class="fas fa-gift"></i>
+        Yeh! You unlocked your points usage rewards 🎊
+      </div>
+
+    </div>
+
+    <div class="btn-row" style="margin-bottom:12px;">
+
+      <button id="reviewBtn" class="btn btn-green">
+        <i class="fas fa-comment-dots"></i> Write Review
+      </button>
+
+      <a href="index.html" class="btn btn-orange">
+        <i class="fas fa-sign-out-alt"></i> Log out
+      </a>
+
+    </div>
+
+    <button id="pointsBtn" class="btn btn-orange" style="width:100%;">
+      <i class="fas fa-coins"></i>
+      See Points Used Details
+    </button>
+
+  </div>
+</div>
+
+<!-- ================= REVIEW MODAL ================= -->
+<div id="overlay" class="overlay">
+
+  <div class="review-box">
+
+    <div class="review-icon">
+      <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <h3>Share Your Experience</h3>
+    <p class="sub">We'd love to hear what you think!</p>
+
+    <textarea id="reviewText" placeholder="Tell us about your visit..." required></textarea>
+
+    <input type="hidden" id="starValue" value="0">
+
+    <p class="star-label">Rate your experience</p>
+
+    <div class="stars">
+      <span data-star="1">★</span>
+      <span data-star="2">★</span>
+      <span data-star="3">★</span>
+      <span data-star="4">★</span>
+      <span data-star="5">★</span>
+    </div>
+
+    <div class="modal-btns">
+      <button type="button" id="submitReview" class="btn submit-btn">
+        <i class="fas fa-paper-plane"></i> Submit
+      </button>
+
+      <button type="button" id="closeBtn" class="btn close-btn">
+        <i class="fas fa-times"></i> Cancel
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= POINTS DETAILS MODAL ================= -->
+<div id="pointsOverlay" class="overlay">
+
+  <div class="review-box">
+
+    <div class="review-icon">
+      <i class="fas fa-coins"></i>
+    </div>
+
+    <h3>Points Usage Details</h3>
+    <p class="sub">Unlock rewards using your loyalty points</p>
+
+    <div class="points-details">
+
+      <div class="point-item">
+        <i class="fas fa-lock"></i>
+        <span>
+          Collect atleast <b>50 points</b> to unlock your points usage.
+        </span>
+      </div>
+
+      <div class="point-item">
+        <i class="ti ti-bowl"></i>
+        <span>
+          <b>Dahipuri</b> requires <b>80 points</b>.
+        </span>
+      </div>
+
+      <div class="point-item">
+        <i class="fas fa-pepper-hot"></i>
+        <span>
+          Panipuri & Chatpate require <b>50 points</b>.
+        </span>
+      </div>
+
+    </div>
+
+    <button type="button" id="closePointsBtn" class="btn close-btn" style="margin-top:22px;">
+      <i class="fas fa-times"></i> Close
+    </button>
+
+  </div>
+</div>
+
+<script>
+const pts = 65;
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const fill = document.getElementById("progressFill");
+    fill.style.background = "linear-gradient(90deg, #3A7D44, #27ae60)";
+    fill.style.width = Math.min((pts / 50) * 100, 100) + "%";
+  }, 400);
+});
+
+// Review modal
+document.getElementById("reviewBtn").addEventListener("click", () => {
+  document.getElementById("overlay").classList.add("active");
+});
+
+document.getElementById("closeBtn").addEventListener("click", () => {
+  document.getElementById("overlay").classList.remove("active");
+});
+
+document.getElementById("overlay").addEventListener("click", (e) => {
+  if (e.target.id === "overlay") {
+    document.getElementById("overlay").classList.remove("active");
+  }
+});
+
+// Points modal
+document.getElementById("pointsBtn").addEventListener("click", () => {
+  document.getElementById("pointsOverlay").classList.add("active");
+});
+
+document.getElementById("closePointsBtn").addEventListener("click", () => {
+  document.getElementById("pointsOverlay").classList.remove("active");
+});
+
+document.getElementById("pointsOverlay").addEventListener("click", (e) => {
+  if (e.target.id === "pointsOverlay") {
+    document.getElementById("pointsOverlay").classList.remove("active");
+  }
+});
+
+// Star rating
+const stars = document.querySelectorAll(".stars span");
+const starValue = document.getElementById("starValue");
+
+stars.forEach((star) => {
+  star.addEventListener("click", () => {
+    const val = Number(star.getAttribute("data-star"));
+    starValue.value = val;
+
+    stars.forEach(s => s.classList.remove("active"));
+
+    for (let i = 0; i < val; i++) {
+      stars[i].classList.add("active");
+    }
+  });
+
+  star.addEventListener("mouseenter", () => {
+    const val = Number(star.getAttribute("data-star"));
+    stars.forEach((s, idx) => {
+      s.style.color = idx < val ? "#f39c12" : "";
+    });
+  });
+
+  star.addEventListener("mouseleave", () => {
+    stars.forEach(s => s.style.color = "");
+  });
+});
+
+// Static review submit
+document.getElementById("submitReview").addEventListener("click", () => {
+  const review = document.getElementById("reviewText").value.trim();
+  const rating = Number(starValue.value);
+
+  if (!review) {
+    showToast("Please write a review first.", "error");
+    return;
+  }
+
+  if (rating === 0) {
+    showToast("Please select a star rating.", "error");
+    return;
+  }
+
+  document.getElementById("overlay").classList.remove("active");
+  document.getElementById("reviewText").value = "";
+  starValue.value = "0";
+  stars.forEach(s => s.classList.remove("active"));
+
+  showToast("Review submitted successfully!", "success");
+});
+
+function showToast(message, type) {
+  const toast = document.getElementById("demoToast");
+  toast.className = "toast " + type;
+  toast.innerHTML =
+    '<i class="fas ' +
+    (type === "success" ? "fa-circle-check" : "fa-circle-xmark") +
+    '"></i><span>' + message + '</span>';
+
+  toast.style.display = "flex";
+  toast.style.animation = "none";
+  void toast.offsetWidth;
+  toast.style.animation =
+    "toastIn 0.4s cubic-bezier(.3,1.4,.5,1) both, toastOut 0.4s ease 3.2s forwards";
+}
+
+// Static demo celebration
+function launchBalloons() {
+  const colors = [
+    "#ff6b6b", "#ffd93d", "#6bcb77",
+    "#4d96ff", "#ff6bff", "#ff0099",
+    "#ff7f00", "#00e0ff"
+  ];
+
+  const container = document.createElement("div");
+  container.id = "balloon-container";
+  container.style.cssText =
+    "position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden;";
+  document.body.appendChild(container);
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .balloon {
+      position:absolute;
+      bottom:-160px;
+      width:60px;
+      height:75px;
+      border-radius:50% 50% 50% 50% / 55% 55% 45% 45%;
+      animation:floatUp linear forwards;
+    }
+    .balloon::after {
+      content:'';
+      position:absolute;
+      bottom:-40px;
+      left:50%;
+      transform:translateX(-50%);
+      width:1px;
+      height:35px;
+      background:rgba(0,0,0,0.25);
+    }
+    .balloon-knot {
+      position:absolute;
+      bottom:-8px;
+      left:50%;
+      transform:translateX(-50%);
+      width:8px;
+      height:8px;
+      border-radius:50%;
+    }
+    @keyframes floatUp {
+      0% { bottom:-160px; opacity:1; transform:translateX(0); }
+      25% { transform:translateX(18px); }
+      50% { transform:translateX(-18px); }
+      75% { transform:translateX(12px); }
+      100% { bottom:110%; opacity:.6; transform:translateX(-12px); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  let count = 0;
+  const total = 18;
+
+  const interval = setInterval(() => {
+    if (count >= total) {
+      clearInterval(interval);
+      setTimeout(() => {
+        container.remove();
+        style.remove();
+      }, 6000);
+      return;
+    }
+
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const balloon = document.createElement("div");
+    balloon.className = "balloon";
+
+    balloon.style.cssText = `
+      left:${Math.random() * 90 + 5}%;
+      background:${color};
+      box-shadow:inset -8px -4px 0 rgba(0,0,0,.1),
+                 inset 6px 6px 0 rgba(255,255,255,.25);
+      animation-duration:${3.5 + Math.random() * 2.5}s;
+      animation-delay:${Math.random() * .5}s;
+    `;
+
+    const knot = document.createElement("div");
+    knot.className = "balloon-knot";
+    knot.style.background = color;
+
+    balloon.appendChild(knot);
+    container.appendChild(balloon);
+    count++;
+  }, 250);
+}
+
+// Run a small demo celebration once.
+setTimeout(launchBalloons, 700);
+</script>
+
+</body>
+</html>
